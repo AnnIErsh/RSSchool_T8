@@ -27,7 +27,9 @@
 }
 
 - (void)tapOnRightBarItem {
-
+    RSDrawingsVC *drawVC = [[RSDrawingsVC alloc] initWithNibName:@"RSDrawingsVC" bundle:nil];
+    [self.navigationController pushViewController:drawVC animated:NO];
+    
 }
 
 @end
