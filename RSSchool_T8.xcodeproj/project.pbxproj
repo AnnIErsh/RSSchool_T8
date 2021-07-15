@@ -8,27 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		E7A5B7A226A0BD830048B382 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7A126A0BD830048B382 /* AppDelegate.m */; };
-		E7A5B7A526A0BD830048B382 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7A426A0BD830048B382 /* SceneDelegate.m */; };
-		E7A5B7A826A0BD830048B382 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7A726A0BD830048B382 /* ViewController.m */; };
-		E7A5B7AB26A0BD830048B382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7A926A0BD830048B382 /* Main.storyboard */; };
 		E7A5B7AD26A0BD850048B382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7AC26A0BD850048B382 /* Assets.xcassets */; };
 		E7A5B7B026A0BD850048B382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7AE26A0BD850048B382 /* LaunchScreen.storyboard */; };
 		E7A5B7B326A0BD850048B382 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7B226A0BD850048B382 /* main.m */; };
+		E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7BB26A0C1860048B382 /* RSNavigationVC.m */; };
+		E7A5B7E726A0CB590048B382 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7E526A0CB590048B382 /* Montserrat-Medium.ttf */; };
+		E7A5B7E826A0CB590048B382 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7E626A0CB590048B382 /* Montserrat-Regular.ttf */; };
+		E7A5B7EF26A0D5A40048B382 /* RSArtistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7ED26A0D5A40048B382 /* RSArtistVC.m */; };
+		E7A5B7F026A0D5A40048B382 /* RSArtistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7EE26A0D5A40048B382 /* RSArtistVC.xib */; };
+		E7A5B7F626A0DBAE0048B382 /* RSDrawingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */; };
+		E7A5B7F726A0DBAE0048B382 /* RSDrawingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E7A5B79D26A0BD830048B382 /* RSSchool_T8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_T8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A5B7A026A0BD830048B382 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7A5B7A126A0BD830048B382 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E7A5B7A326A0BD830048B382 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		E7A5B7A426A0BD830048B382 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		E7A5B7A626A0BD830048B382 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E7A5B7A726A0BD830048B382 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E7A5B7AA26A0BD830048B382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7A5B7AC26A0BD850048B382 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7A5B7AF26A0BD850048B382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A5B7B126A0BD850048B382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7A5B7B226A0BD850048B382 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E7A5B7BA26A0C1860048B382 /* RSNavigationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSNavigationVC.h; sourceTree = "<group>"; };
+		E7A5B7BB26A0C1860048B382 /* RSNavigationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSNavigationVC.m; sourceTree = "<group>"; };
+		E7A5B7E526A0CB590048B382 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		E7A5B7E626A0CB590048B382 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		E7A5B7EB26A0D1A60048B382 /* RSArtistState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSArtistState.h; sourceTree = "<group>"; };
+		E7A5B7EC26A0D5A40048B382 /* RSArtistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSArtistVC.h; sourceTree = "<group>"; };
+		E7A5B7ED26A0D5A40048B382 /* RSArtistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSArtistVC.m; sourceTree = "<group>"; };
+		E7A5B7EE26A0D5A40048B382 /* RSArtistVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSArtistVC.xib; sourceTree = "<group>"; };
+		E7A5B7F326A0DBAE0048B382 /* RSSchool_T8-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSchool_T8-Bridging-Header.h"; sourceTree = "<group>"; };
+		E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDrawingsVC.swift; sourceTree = "<group>"; };
+		E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSDrawingsVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,19 +71,57 @@
 		E7A5B79F26A0BD830048B382 /* RSSchool_T8 */ = {
 			isa = PBXGroup;
 			children = (
+				E7A5B7F226A0DADD0048B382 /* RSDrawingsVC */,
+				E7A5B7F126A0D5AD0048B382 /* RSArtistVC */,
+				E7A5B7B926A0C1220048B382 /* RSNavigationVC */,
 				E7A5B7A026A0BD830048B382 /* AppDelegate.h */,
 				E7A5B7A126A0BD830048B382 /* AppDelegate.m */,
-				E7A5B7A326A0BD830048B382 /* SceneDelegate.h */,
-				E7A5B7A426A0BD830048B382 /* SceneDelegate.m */,
-				E7A5B7A626A0BD830048B382 /* ViewController.h */,
-				E7A5B7A726A0BD830048B382 /* ViewController.m */,
-				E7A5B7A926A0BD830048B382 /* Main.storyboard */,
+				E7A5B7E226A0CA930048B382 /* fonts */,
 				E7A5B7AC26A0BD850048B382 /* Assets.xcassets */,
 				E7A5B7AE26A0BD850048B382 /* LaunchScreen.storyboard */,
 				E7A5B7B126A0BD850048B382 /* Info.plist */,
 				E7A5B7B226A0BD850048B382 /* main.m */,
 			);
 			path = RSSchool_T8;
+			sourceTree = "<group>";
+		};
+		E7A5B7B926A0C1220048B382 /* RSNavigationVC */ = {
+			isa = PBXGroup;
+			children = (
+				E7A5B7BA26A0C1860048B382 /* RSNavigationVC.h */,
+				E7A5B7BB26A0C1860048B382 /* RSNavigationVC.m */,
+			);
+			path = RSNavigationVC;
+			sourceTree = "<group>";
+		};
+		E7A5B7E226A0CA930048B382 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E7A5B7E526A0CB590048B382 /* Montserrat-Medium.ttf */,
+				E7A5B7E626A0CB590048B382 /* Montserrat-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		E7A5B7F126A0D5AD0048B382 /* RSArtistVC */ = {
+			isa = PBXGroup;
+			children = (
+				E7A5B7EC26A0D5A40048B382 /* RSArtistVC.h */,
+				E7A5B7ED26A0D5A40048B382 /* RSArtistVC.m */,
+				E7A5B7EB26A0D1A60048B382 /* RSArtistState.h */,
+				E7A5B7EE26A0D5A40048B382 /* RSArtistVC.xib */,
+			);
+			path = RSArtistVC;
+			sourceTree = "<group>";
+		};
+		E7A5B7F226A0DADD0048B382 /* RSDrawingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */,
+				E7A5B7F326A0DBAE0048B382 /* RSSchool_T8-Bridging-Header.h */,
+				E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */,
+			);
+			path = RSDrawingsVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,6 +154,7 @@
 				TargetAttributes = {
 					E7A5B79C26A0BD830048B382 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -132,9 +181,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A5B7E826A0CB590048B382 /* Montserrat-Regular.ttf in Resources */,
 				E7A5B7B026A0BD850048B382 /* LaunchScreen.storyboard in Resources */,
+				E7A5B7E726A0CB590048B382 /* Montserrat-Medium.ttf in Resources */,
+				E7A5B7F026A0D5A40048B382 /* RSArtistVC.xib in Resources */,
+				E7A5B7F726A0DBAE0048B382 /* RSDrawingsVC.xib in Resources */,
 				E7A5B7AD26A0BD850048B382 /* Assets.xcassets in Resources */,
-				E7A5B7AB26A0BD830048B382 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,24 +197,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7A5B7A826A0BD830048B382 /* ViewController.m in Sources */,
+				E7A5B7EF26A0D5A40048B382 /* RSArtistVC.m in Sources */,
 				E7A5B7A226A0BD830048B382 /* AppDelegate.m in Sources */,
+				E7A5B7F626A0DBAE0048B382 /* RSDrawingsVC.swift in Sources */,
 				E7A5B7B326A0BD850048B382 /* main.m in Sources */,
-				E7A5B7A526A0BD830048B382 /* SceneDelegate.m in Sources */,
+				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E7A5B7A926A0BD830048B382 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7A5B7AA26A0BD830048B382 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E7A5B7AE26A0BD850048B382 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -209,6 +254,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -225,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,6 +314,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -278,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -291,6 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W2M8AABV3R;
 				INFOPLIST_FILE = RSSchool_T8/Info.plist;
@@ -300,6 +348,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "anniersh.RSSchool-T8";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T8/RSDrawingsVC/RSSchool_T8-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -309,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W2M8AABV3R;
 				INFOPLIST_FILE = RSSchool_T8/Info.plist;
@@ -318,6 +370,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "anniersh.RSSchool-T8";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T8/RSDrawingsVC/RSSchool_T8-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
