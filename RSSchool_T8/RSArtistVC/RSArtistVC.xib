@@ -33,25 +33,25 @@
                     <rect key="frame" x="20" y="452" width="163" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Open Palette "/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOF-nR-D2h" customClass="RSUIButton">
                     <rect key="frame" x="243" y="452" width="91" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Draw"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-kZ-uaf" customClass="RSUIButton">
                     <rect key="frame" x="20" y="504" width="151" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Open Timer"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTT-Ms-LFK" customClass="RSUIButton">
                     <rect key="frame" x="239" y="504" width="95" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Share"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

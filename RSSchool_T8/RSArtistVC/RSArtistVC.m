@@ -16,10 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.state = ASIdle;
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
-    [self makeButtonTitles];
+    [self makeCanvas];
+    [self addActionsOnButtons];
+    [self checkState];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.state = ASIdle;
+    [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark UI
@@ -55,11 +61,18 @@
     self.navigationItem.titleView = middleItem;
 }
 
-- (void)makeButtonTitles {
-    [self.openPalette setTitle:@"Open Palette" forState:UIControlStateNormal];
-    [self.openTimer setTitle:@"Open Timer" forState:UIControlStateNormal];
-    [self.draw setTitle:@"Draw" forState:UIControlStateNormal];
-    [self.share setTitle:@"Share" forState:UIControlStateNormal];
+- (void)makeCanvas {
+    self.canvas.backgroundColor = [UIColor whiteColor];
+    self.canvas.clipsToBounds = NO;
+    UIBezierPath *shadowPath0 = [UIBezierPath bezierPathWithRoundedRect:self.canvas.bounds cornerRadius:8];
+    self.canvas.layer.shadowPath = shadowPath0.CGPath;
+    self.canvas.layer.shadowColor = [UIColor colorWithRed:0 green:0.7 blue:1 alpha:0.25].CGColor;
+    self.canvas.layer.shadowOpacity = 1;
+    self.canvas.layer.shadowRadius = 4;
+    self.canvas.layer.shadowOffset = CGSizeMake(0, 0);
+    self.canvas.layer.bounds = self.canvas.bounds;
+    self.canvas.layer.position = self.canvas.center;
+    self.canvas.layer.cornerRadius = 8;
 }
 
 #pragma mark Action
@@ -67,6 +80,55 @@
 - (void)tapOnRightBarItem {
     RSDrawingsVC *drawVC = [[RSDrawingsVC alloc] initWithNibName:@"RSDrawingsVC" bundle:nil];
     [self.navigationController pushViewController:drawVC animated:NO];
+}
+
+- (void)addActionsOnButtons {
+    [self.draw addTarget:self action:@selector(tapOnDraw) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)tapOnDraw {
+    self.state = ASDraw;
+    NSLog(@"drawing....");
+}
+
+- (void)checkState {
+    if (self.state == ASIdle)
+    {
+        for (UIButton *button in self.view.subviews)
+        {
+            if (self.state == ASIdle)
+            {
+                if ([button isKindOfClass:[RSUIButton class]])
+                {
+                    if ([button.titleLabel.text isEqualToString:@"Share"])
+                    {
+                        [button setUserInteractionEnabled:NO];
+                        [button setAlpha:0.5];
+                    }
+                    else
+                    {
+                        [button setUserInteractionEnabled:YES];
+                        [button setAlpha:1];
+                    }
+                }
+            }
+        }
+    }
+    if (self.state == ASDraw)
+    {
+        for (UIButton *button in self.view.subviews)
+        {
+            if ([button isKindOfClass:[RSUIButton class]])
+            {
+                [button setUserInteractionEnabled:NO];
+                [button setAlpha:0.5];
+            }
+        }
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    [self checkState];
 }
 
 @end
