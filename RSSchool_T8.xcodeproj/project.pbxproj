@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E723493E26A1B14B0096D488 /* RSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E723493D26A1B14B0096D488 /* RSUIButton.m */; };
 		E7A5B7A226A0BD830048B382 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7A126A0BD830048B382 /* AppDelegate.m */; };
 		E7A5B7AD26A0BD850048B382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7AC26A0BD850048B382 /* Assets.xcassets */; };
 		E7A5B7B026A0BD850048B382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7AE26A0BD850048B382 /* LaunchScreen.storyboard */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E723493C26A1B14B0096D488 /* RSUIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIButton.h; sourceTree = "<group>"; };
+		E723493D26A1B14B0096D488 /* RSUIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIButton.m; sourceTree = "<group>"; };
 		E7A5B79D26A0BD830048B382 /* RSSchool_T8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_T8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A5B7A026A0BD830048B382 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7A5B7A126A0BD830048B382 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E723493B26A1B1010096D488 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				E723493C26A1B14B0096D488 /* RSUIButton.h */,
+				E723493D26A1B14B0096D488 /* RSUIButton.m */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		E7A5B79426A0BD830048B382 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +118,7 @@
 		E7A5B7F126A0D5AD0048B382 /* RSArtistVC */ = {
 			isa = PBXGroup;
 			children = (
+				E723493B26A1B1010096D488 /* Buttons */,
 				E7A5B7EC26A0D5A40048B382 /* RSArtistVC.h */,
 				E7A5B7ED26A0D5A40048B382 /* RSArtistVC.m */,
 				E7A5B7EB26A0D1A60048B382 /* RSArtistState.h */,
@@ -201,6 +214,7 @@
 				E7A5B7A226A0BD830048B382 /* AppDelegate.m in Sources */,
 				E7A5B7F626A0DBAE0048B382 /* RSDrawingsVC.swift in Sources */,
 				E7A5B7B326A0BD850048B382 /* main.m in Sources */,
+				E723493E26A1B14B0096D488 /* RSUIButton.m in Sources */,
 				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

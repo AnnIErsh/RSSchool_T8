@@ -7,11 +7,17 @@
 
 #import <UIKit/UIKit.h>
 #import "RSArtistState.h"
-NS_ASSUME_NONNULL_BEGIN
+@class RSUIButton;
 
+NS_ASSUME_NONNULL_BEGIN
 @interface RSArtistVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *canvas;
+@property (weak, nonatomic) IBOutlet RSUIButton *openPalette;
+@property (weak, nonatomic) IBOutlet RSUIButton *openTimer;
+@property (weak, nonatomic) IBOutlet RSUIButton *share;
+@property (weak, nonatomic) IBOutlet RSUIButton *draw;
 @property (nonatomic) RSArtistState state;
+
 @end
 
 NS_ASSUME_NONNULL_END

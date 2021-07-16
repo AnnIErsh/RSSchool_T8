@@ -6,6 +6,7 @@
 //
 
 #import "RSArtistVC.h"
+#import "RSUIButton.h"
 #import "RSSchool_T8-Swift.h"
 @interface RSArtistVC ()
 
@@ -18,6 +19,7 @@
     self.state = ASIdle;
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
+    [self makeButtonTitles];
 }
 
 #pragma mark UI
@@ -51,6 +53,13 @@
                   NSKernAttributeName: @-0.41}];
     middleItem.attributedText = string;
     self.navigationItem.titleView = middleItem;
+}
+
+- (void)makeButtonTitles {
+    [self.openPalette setTitle:@"Open Palette" forState:UIControlStateNormal];
+    [self.openTimer setTitle:@"Open Timer" forState:UIControlStateNormal];
+    [self.draw setTitle:@"Draw" forState:UIControlStateNormal];
+    [self.share setTitle:@"Share" forState:UIControlStateNormal];
 }
 
 #pragma mark Action
