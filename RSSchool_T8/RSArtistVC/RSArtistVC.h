@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSArtistVC : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (nonatomic) RSArtistState state;
 @end
 

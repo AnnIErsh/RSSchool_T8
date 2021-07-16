@@ -14,9 +14,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
-    
-    // Do any additional setup after loading the view.
+    [self navigationBarUI];
+}
+
+- (void)navigationBarUI {
+    self.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 62);
+    self.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 @end

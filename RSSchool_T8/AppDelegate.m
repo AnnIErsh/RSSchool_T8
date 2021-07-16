@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window = window;
-    RSArtistVC *artistVC = [RSArtistVC new];
+    RSArtistVC *artistVC = [[RSArtistVC alloc] initWithNibName:@"RSArtistVC" bundle:nil];
     RSNavigationVC *rootVC = [[RSNavigationVC alloc] initWithRootViewController:artistVC];
     [self.window setRootViewController:rootVC];
     if (@available(iOS 13.0, *))
