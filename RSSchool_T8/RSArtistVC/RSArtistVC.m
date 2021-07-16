@@ -7,6 +7,7 @@
 
 #import "RSArtistVC.h"
 #import "RSUIButton.h"
+#import "RSPalletVC.h"
 #import "RSSchool_T8-Swift.h"
 @interface RSArtistVC ()
 
@@ -84,11 +85,21 @@
 
 - (void)addActionsOnButtons {
     [self.draw addTarget:self action:@selector(tapOnDraw) forControlEvents:UIControlEventTouchUpInside];
+    [self.openPalette addTarget:self action:@selector(tapOnPallete) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)tapOnDraw {
     self.state = ASDraw;
     NSLog(@"drawing....");
+}
+
+- (void)tapOnPallete {
+    RSPalletVC *palletVC = [[RSPalletVC alloc] initWithNibName:@"RSPalletVC" bundle:nil];
+    [self addChildViewController:palletVC];
+    palletVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height / 2);
+    [self.view addSubview:palletVC.view];
+    [palletVC didMoveToParentViewController:self];
+    NSLog(@"open...");
 }
 
 - (void)checkState {

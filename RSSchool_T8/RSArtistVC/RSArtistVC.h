@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "RSArtistState.h"
 @class RSUIButton;
-
 NS_ASSUME_NONNULL_BEGIN
 @interface RSArtistVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *canvas;
