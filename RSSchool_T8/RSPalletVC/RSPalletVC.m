@@ -7,6 +7,7 @@
 
 #import "RSPalletVC.h"
 #import "RSPalleteUnit.h"
+#import "UIColor+RSColor.h"
 
 @interface RSPalletVC ()
 
@@ -27,13 +28,13 @@
 - (void)makePaletteUnitsInRow:(UIView*)view withTag:(NSNumber*)t {
     NSInteger step = 0;
     int tmp = t.intValue;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 6; i++)
     {
         RSPalleteUnit *button = [[RSPalleteUnit alloc] initWithFrame:CGRectMake(step, 0, 40, 40)];
         [view addSubview:button];
         step = button.frame.origin.x + button.frame.size.width + 20;
-        [self makeStyleForUnit:button];
         button.tag = tmp;
+        [self makeStyleForUnit:button];
         tmp++;
     }
     [self manageTapsOnUnitsInRow:view];
@@ -49,9 +50,9 @@
     unit.layer.shadowRadius = 2;
     unit.layer.cornerRadius = 10;
     unit.layer.masksToBounds = NO;
-    
     CALayer *sublayer = [CALayer layer];
-    sublayer.backgroundColor = [UIColor redColor].CGColor;
+    UIColor *color = [UIColor putUnitColorOfUnitTag:@(unit.tag)];
+    sublayer.backgroundColor = color.CGColor;
     sublayer.frame = CGRectMake(8, 8, 24, 24);
     sublayer.cornerRadius = 6;
     [unit.layer addSublayer:sublayer];
@@ -108,15 +109,15 @@
         [self.arr removeObjectAtIndex:0];
         [self.arr addObject:@(sender.tag)];
     }
-    NSLog(@"arr: %@", self.arr);
+    //NSLog(@"arr: %@", self.arr);
 }
 
 - (void)resetSublayer:(UIButton*)view {
-    [view.layer.sublayers.lastObject removeFromSuperlayer];
     CALayer *sublayer = [CALayer layer];
-    sublayer.backgroundColor = [UIColor redColor].CGColor;
+    sublayer.backgroundColor = view.layer.sublayers.lastObject.backgroundColor;
     sublayer.frame = CGRectMake(8, 8, 24, 24);
     sublayer.cornerRadius = 8;
+    [view.layer.sublayers.lastObject removeFromSuperlayer];
     [view.layer addSublayer:sublayer];
 }
 
