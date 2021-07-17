@@ -79,37 +79,51 @@
     }
 }
 
+- (BOOL)checkSameElements:(RSPalleteUnit*)sender {
+    if ([self.arr containsObject:@(sender.tag)])
+    {
+        [self resetSublayer:sender];
+        [self.arr removeObject:@(sender.tag)];
+        return YES;
+    }
+    return NO;
+}
+
 - (void)tapOnUnit:(RSPalleteUnit*)sender {
-    if (self.arr == @[].mutableCopy || self.arr.count < 3)
+    BOOL check = [self checkSameElements:sender];
+    if (!check)
     {
-        [self.arr addObject:@(sender.tag)];
-    }
-    else
-    {
-        for (UIButton *unit in self.downRowView.subviews)
+        if (self.arr == @[].mutableCopy || self.arr.count < 3)
         {
-            if ([unit isKindOfClass:[RSPalleteUnit class]])
+            [self.arr addObject:@(sender.tag)];
+        }
+        else
+        {
+            for (UIButton *unit in self.downRowView.subviews)
             {
-                if (unit.tag == self.arr[0].integerValue)
+                if ([unit isKindOfClass:[RSPalleteUnit class]])
                 {
-                    [self resetSublayer:unit];
+                    if (unit.tag == self.arr[0].integerValue)
+                    {
+                        [self resetSublayer:unit];
+                    }
                 }
             }
-        }
-        for (UIButton *unit in self.topRowView.subviews)
-        {
-            if ([unit isKindOfClass:[RSPalleteUnit class]])
+            for (UIButton *unit in self.topRowView.subviews)
             {
-                if (unit.tag == self.arr[0].integerValue)
+                if ([unit isKindOfClass:[RSPalleteUnit class]])
                 {
-                    [self resetSublayer:unit];
+                    if (unit.tag == self.arr[0].integerValue)
+                    {
+                        [self resetSublayer:unit];
+                    }
                 }
             }
+            [self.arr removeObjectAtIndex:0];
+            [self.arr addObject:@(sender.tag)];
         }
-        [self.arr removeObjectAtIndex:0];
-        [self.arr addObject:@(sender.tag)];
     }
-    //NSLog(@"arr: %@", self.arr);
+    NSLog(@"arr: %@", self.arr);
 }
 
 - (void)resetSublayer:(UIButton*)view {
