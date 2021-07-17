@@ -8,6 +8,7 @@
 #import "RSArtistVC.h"
 #import "RSUIButton.h"
 #import "RSPalletVC.h"
+#import "RSHeadView.h"
 #import "RSSchool_T8-Swift.h"
 @interface RSArtistVC ()
 
@@ -91,6 +92,9 @@
 
 - (void)tapOnDraw {
     self.state = ASDraw;
+    RSHeadView *head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
+    [self.canvas addSubview:head];
+    
 }
 
 - (void)createPalletVC {
