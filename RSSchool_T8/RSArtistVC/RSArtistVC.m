@@ -96,7 +96,7 @@
 - (void)tapOnPallete {
     RSPalletVC *palletVC = [[RSPalletVC alloc] initWithNibName:@"RSPalletVC" bundle:nil];
     [self addChildViewController:palletVC];
-    palletVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height / 2);
+    palletVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:palletVC.view];
     [palletVC didMoveToParentViewController:self];
     NSLog(@"open...");

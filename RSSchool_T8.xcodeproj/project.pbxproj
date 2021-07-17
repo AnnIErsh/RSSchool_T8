@@ -10,6 +10,7 @@
 		E723493E26A1B14B0096D488 /* RSUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E723493D26A1B14B0096D488 /* RSUIButton.m */; };
 		E723494626A228EC0096D488 /* RSPalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E723494426A228EC0096D488 /* RSPalletVC.m */; };
 		E723494726A228EC0096D488 /* RSPalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E723494526A228EC0096D488 /* RSPalletVC.xib */; };
+		E723494C26A243FB0096D488 /* RSPalleteUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = E723494B26A243FB0096D488 /* RSPalleteUnit.m */; };
 		E7A5B7A226A0BD830048B382 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7A126A0BD830048B382 /* AppDelegate.m */; };
 		E7A5B7AD26A0BD850048B382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7AC26A0BD850048B382 /* Assets.xcassets */; };
 		E7A5B7B026A0BD850048B382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7AE26A0BD850048B382 /* LaunchScreen.storyboard */; };
@@ -29,6 +30,8 @@
 		E723494326A228EC0096D488 /* RSPalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPalletVC.h; sourceTree = "<group>"; };
 		E723494426A228EC0096D488 /* RSPalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPalletVC.m; sourceTree = "<group>"; };
 		E723494526A228EC0096D488 /* RSPalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSPalletVC.xib; sourceTree = "<group>"; };
+		E723494A26A243FB0096D488 /* RSPalleteUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPalleteUnit.h; sourceTree = "<group>"; };
+		E723494B26A243FB0096D488 /* RSPalleteUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPalleteUnit.m; sourceTree = "<group>"; };
 		E7A5B79D26A0BD830048B382 /* RSSchool_T8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSchool_T8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A5B7A026A0BD830048B382 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7A5B7A126A0BD830048B382 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,11 +75,21 @@
 		E723493F26A227F50096D488 /* RSPalletVC */ = {
 			isa = PBXGroup;
 			children = (
+				E723494926A243D40096D488 /* RSPalleteUnit */,
 				E723494326A228EC0096D488 /* RSPalletVC.h */,
 				E723494426A228EC0096D488 /* RSPalletVC.m */,
 				E723494526A228EC0096D488 /* RSPalletVC.xib */,
 			);
 			path = RSPalletVC;
+			sourceTree = "<group>";
+		};
+		E723494926A243D40096D488 /* RSPalleteUnit */ = {
+			isa = PBXGroup;
+			children = (
+				E723494A26A243FB0096D488 /* RSPalleteUnit.h */,
+				E723494B26A243FB0096D488 /* RSPalleteUnit.m */,
+			);
+			path = RSPalleteUnit;
 			sourceTree = "<group>";
 		};
 		E7A5B79426A0BD830048B382 = {
@@ -233,6 +246,7 @@
 				E7A5B7F626A0DBAE0048B382 /* RSDrawingsVC.swift in Sources */,
 				E7A5B7B326A0BD850048B382 /* main.m in Sources */,
 				E723493E26A1B14B0096D488 /* RSUIButton.m in Sources */,
+				E723494C26A243FB0096D488 /* RSPalleteUnit.m in Sources */,
 				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
