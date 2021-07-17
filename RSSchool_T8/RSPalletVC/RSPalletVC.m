@@ -47,6 +47,10 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
 
 - (void)tapOnSave:(RSUIButton*)sender {
     NSLog(@"Tap On Save");
+    NSMutableArray *colors = @[].mutableCopy;
+    for (NSNumber *i in self.arr)
+        [colors addObject:[UIColor putUnitColorOfUnitTag:i]];
+    [self.delegate passChoosenColors:colors];
     self.view.hidden = YES;
 }
 

@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSpaletteVCDelegate.h"
 NS_ASSUME_NONNULL_BEGIN
 @class RSUIButton;
 @interface RSPalletVC : UIViewController
@@ -13,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *downRowView;
 @property (weak, nonatomic) IBOutlet RSUIButton *save;
 @property (nonatomic) NSMutableArray<NSNumber*> *arr;
-
+@property (nonatomic, weak) id <RSpaletteVCDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

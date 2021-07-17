@@ -99,6 +99,7 @@
     palletVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:palletVC.view];
     [palletVC didMoveToParentViewController:self];
+    palletVC.delegate = self;
     palletVC.view.hidden = YES;
 }
 
@@ -144,6 +145,10 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     [self checkState];
+}
+
+- (void)passChoosenColors:(NSArray<UIColor *> *)theValue {
+    NSLog(@"get colors: %@", theValue);
 }
 
 @end
