@@ -84,8 +84,10 @@
     {
         [self resetSublayer:sender];
         [self.arr removeObject:@(sender.tag)];
+        self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
         return YES;
     }
+    self.view.layer.backgroundColor = sender.layer.sublayers.lastObject.backgroundColor;
     return NO;
 }
 
