@@ -110,6 +110,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
 
 - (void)setPaletteTime:(NSTimer*)timer {
     self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    NSLog(@"palette timer...");
 }
 
 - (BOOL)checkSameElements:(RSPalleteUnit*)sender {
@@ -175,6 +176,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     [self.timer invalidate];
+    self.timer = nil;
 }
 
 @end

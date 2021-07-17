@@ -26,10 +26,12 @@
         [path addLineToPoint:[point CGPointValue]];
         [self.headLayers addObject:[self createLayerWithPath:path color:[UIColor blackColor] andWidth:1]];
     }
-    [NSTimer scheduledTimerWithTimeInterval:i
-                          target: self
-                          selector:@selector(addSublayerToCanvas)
-                          userInfo: nil repeats:YES];
+    [self.time invalidate];
+    self.time = nil;
+    self.time = [NSTimer scheduledTimerWithTimeInterval:i
+                                                     target: self
+                                                   selector:@selector(addSublayerToCanvas)
+                                                   userInfo: nil repeats:YES];
 }
 
 - (void)addSublayerToCanvas {
@@ -38,6 +40,13 @@
         [self.layer addSublayer:self.headLayers[0]];
         [self.headLayers removeObjectAtIndex:0];
     }
+    else
+    {
+        [self.time invalidate];
+        self.time = nil;
+        NSLog(@"STOP");
+    }
+    NSLog(@"timer...");
 }
 
 - (CAShapeLayer*)createLayerWithPath:(UIBezierPath*)path color:(UIColor*)color andWidth:(NSInteger)w {
