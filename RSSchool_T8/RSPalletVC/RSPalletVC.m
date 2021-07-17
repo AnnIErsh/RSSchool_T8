@@ -9,8 +9,16 @@
 #import "RSPalleteUnit.h"
 #import "UIColor+RSColor.h"
 
-@interface RSPalletVC ()
+enum RSPaletteUnitState
+{
+    active,
+    inactive,
+};
+typedef enum RSPaletteUnitState RSPaletteUnitState;
 
+@interface RSPalletVC ()
+@property RSPaletteUnitState state;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation RSPalletVC
@@ -22,7 +30,13 @@
     self.downRowView.backgroundColor = [UIColor clearColor];
     [self makePaletteUnitsInRow:self.topRowView withTag:@0];
     [self makePaletteUnitsInRow:self.downRowView withTag:@6];
+    self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
     self.arr = @[].mutableCopy;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.state = inactive;
+    [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)makePaletteUnitsInRow:(UIView*)view withTag:(NSNumber*)t {
@@ -79,6 +93,11 @@
     }
 }
 
+- (void)setPaletteTime:(NSTimer*)timer {
+    NSLog(@"timer...");
+    self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
+}
+
 - (BOOL)checkSameElements:(RSPalleteUnit*)sender {
     if ([self.arr containsObject:@(sender.tag)])
     {
@@ -88,10 +107,13 @@
         return YES;
     }
     self.view.layer.backgroundColor = sender.layer.sublayers.lastObject.backgroundColor;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(setPaletteTime:) userInfo:nil repeats:NO];
+
     return NO;
 }
 
 - (void)tapOnUnit:(RSPalleteUnit*)sender {
+    self.state = active;
     BOOL check = [self checkSameElements:sender];
     if (!check)
     {
@@ -135,6 +157,10 @@
     sublayer.cornerRadius = 8;
     [view.layer.sublayers.lastObject removeFromSuperlayer];
     [view.layer addSublayer:sublayer];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    [self.timer invalidate];
 }
 
 @end
