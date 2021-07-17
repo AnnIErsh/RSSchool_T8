@@ -16,6 +16,12 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (self.state == UIControlStateHighlighted)
         [self setHighlighted:NO];
+    [self.layer.sublayers.lastObject removeFromSuperlayer];
+    CALayer *sublayer = [CALayer layer];
+    sublayer.backgroundColor = [UIColor redColor].CGColor;
+    sublayer.frame = CGRectMake(2, 2, 36, 36);
+    sublayer.cornerRadius = 8;
+    [self.layer addSublayer:sublayer];
     [super touchesBegan:touches withEvent:event];
 }
 

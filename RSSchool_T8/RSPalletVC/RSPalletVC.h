@@ -6,13 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSPalletVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *topRowView;
 @property (weak, nonatomic) IBOutlet UIView *downRowView;
 @property (weak, nonatomic) IBOutlet UIButton *save;
+@property (nonatomic) NSMutableArray<NSNumber*> *arr;
 
 @end
 
