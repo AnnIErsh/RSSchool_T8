@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createPalletVC];
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
     [self makeCanvas];
@@ -90,16 +91,19 @@
 
 - (void)tapOnDraw {
     self.state = ASDraw;
-    NSLog(@"drawing....");
 }
 
-- (void)tapOnPallete {
+- (void)createPalletVC {
     RSPalletVC *palletVC = [[RSPalletVC alloc] initWithNibName:@"RSPalletVC" bundle:nil];
     [self addChildViewController:palletVC];
     palletVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:palletVC.view];
     [palletVC didMoveToParentViewController:self];
-    NSLog(@"open...");
+    palletVC.view.hidden = YES;
+}
+
+- (void)tapOnPallete {
+    self.childViewControllers.lastObject.view.hidden = NO;
 }
 
 - (void)checkState {

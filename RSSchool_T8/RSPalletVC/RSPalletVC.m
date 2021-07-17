@@ -8,6 +8,7 @@
 #import "RSPalletVC.h"
 #import "RSPalleteUnit.h"
 #import "UIColor+RSColor.h"
+#import "RSUIButton.h"
 
 enum RSPaletteUnitState
 {
@@ -32,11 +33,21 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     [self makePaletteUnitsInRow:self.downRowView withTag:@6];
     self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
     self.arr = @[].mutableCopy;
+    [self manageSaveButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     self.state = inactive;
     [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)manageSaveButton {
+    [self.save addTarget:self action:@selector(tapOnSave:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)tapOnSave:(RSUIButton*)sender {
+    NSLog(@"Tap On Save");
+    self.view.hidden = YES;
 }
 
 - (void)makePaletteUnitsInRow:(UIView*)view withTag:(NSNumber*)t {
@@ -94,7 +105,6 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
 }
 
 - (void)setPaletteTime:(NSTimer*)timer {
-    NSLog(@"timer...");
     self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
 }
 
@@ -147,7 +157,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
             [self.arr addObject:@(sender.tag)];
         }
     }
-    NSLog(@"arr: %@", self.arr);
+    //NSLog(@"arr: %@", self.arr);
 }
 
 - (void)resetSublayer:(UIButton*)view {

@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RSPalletVC">
             <connections>
                 <outlet property="downRowView" destination="Tr2-el-SFA" id="MTR-Y4-PgC"/>
-                <outlet property="save" destination="ntK-I7-vQ9" id="28e-a7-kka"/>
+                <outlet property="save" destination="ntK-I7-vQ9" id="Ljk-51-pdN"/>
                 <outlet property="topRowView" destination="DA2-zE-NSb" id="dio-SP-1gG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
