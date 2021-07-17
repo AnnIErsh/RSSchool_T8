@@ -113,17 +113,17 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
 }
 
 - (BOOL)checkSameElements:(RSPalleteUnit*)sender {
+    BOOL res = NO;
     if ([self.arr containsObject:@(sender.tag)])
     {
         [self resetSublayer:sender];
         [self.arr removeObject:@(sender.tag)];
-        self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
-        return YES;
+        res = YES;
     }
-    self.view.layer.backgroundColor = sender.layer.sublayers.lastObject.backgroundColor;
+    else
+        self.view.layer.backgroundColor = sender.layer.sublayers.lastObject.backgroundColor;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(setPaletteTime:) userInfo:nil repeats:NO];
-
-    return NO;
+    return res;
 }
 
 - (void)tapOnUnit:(RSPalleteUnit*)sender {

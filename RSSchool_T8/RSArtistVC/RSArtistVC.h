@@ -7,10 +7,10 @@
 
 #import <UIKit/UIKit.h>
 #import "RSArtistState.h"
+#import "RSpaletteVCDelegate.h"
 @class RSUIButton;
-@protocol RSpaletteVCDelegate;
 NS_ASSUME_NONNULL_BEGIN
-@interface RSArtistVC : UIViewController <RSpaletteVCDelegate>
+@interface RSArtistVC : UIViewController <RSpaletteVCDelegate> 
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet RSUIButton *openPalette;
 @property (weak, nonatomic) IBOutlet RSUIButton *openTimer;
