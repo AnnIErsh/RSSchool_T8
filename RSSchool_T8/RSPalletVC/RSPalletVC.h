@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *topRowView;
 @property (weak, nonatomic) IBOutlet UIView *downRowView;
 @property (weak, nonatomic) IBOutlet RSUIButton *save;
-@property (nonatomic) NSMutableArray<NSNumber*> *arr;
+@property (nonatomic) NSMutableArray<NSNumber *> *arr;
 @property (nonatomic, weak) id <RSpaletteVCDelegate> delegate;
 @end
 

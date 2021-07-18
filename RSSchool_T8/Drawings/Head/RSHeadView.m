@@ -15,16 +15,25 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    NSMutableArray<UIColor *> *randoms = self.colors.mutableCopy;
+    NSUInteger count = [self.colors count];
+    for (NSUInteger i = 0; i < count; i++)
+    {
+        NSInteger elements = count - i;
+        NSInteger n = (arc4random() % elements) + i;
+        [randoms exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+    self.colors = randoms.copy;
     [self drawFirstStrokeWithPath];
     [self drawSecondStrokeWithPath];
     [self drawThirdStrokeWithPath];
 }
 
-- (void)createPath:(UIBezierPath*)path forPoints:(NSArray*)points withInterval:(float)i {
+- (void)createPath:(UIBezierPath *)path forPoints:(NSArray *)points withInterval:(float)i andColor:(UIColor *)color {
     for (id point in points)
     {
         [path addLineToPoint:[point CGPointValue]];
-        [self.headLayers addObject:[self createLayerWithPath:path color:[UIColor blackColor] andWidth:1]];
+        [self.headLayers addObject:[self createLayerWithPath:path color:color andWidth:1]];
     }
     [self.time invalidate];
     self.time = nil;
@@ -49,7 +58,7 @@
     NSLog(@"timer...");
 }
 
-- (CAShapeLayer*)createLayerWithPath:(UIBezierPath*)path color:(UIColor*)color andWidth:(NSInteger)w {
+- (CAShapeLayer*)createLayerWithPath:(UIBezierPath *)path color:(UIColor *)color andWidth:(NSInteger)w {
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.strokeColor = color.CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
@@ -81,9 +90,8 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.62059*width, 0.23676*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.61471*width, 0.30441*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.62647*width, 0.34118*height)], nil];
-    [self createPath:path0 forPoints:points withInterval:0.1];
+    [self createPath:path0 forPoints:points withInterval:0.01 andColor:self.colors[0]];
 }
-
 
 - (void)drawSecondStrokeWithPath {
     UIBezierPath *path1 = [UIBezierPath bezierPath];
@@ -129,7 +137,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.57206*width, 0.30735*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.58676*width, 0.32206*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.60882*width, 0.33529*height)], nil];
-    [self createPath:path1 forPoints:points withInterval:0.1];
+    [self createPath:path1 forPoints:points withInterval:0.01 andColor:self.colors[1]];
 }
 
 - (void)drawThirdStrokeWithPath {
@@ -184,7 +192,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.74265*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.82647*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.87941*height)], nil];
-    [self createPath:path2 forPoints:points withInterval:0.1];
+    [self createPath:path2 forPoints:points withInterval:0.01 andColor:self.colors[2]];
 }
 
 @end

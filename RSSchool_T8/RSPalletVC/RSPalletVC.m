@@ -45,7 +45,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     [self.save addTarget:self action:@selector(tapOnSave:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)tapOnSave:(RSUIButton*)sender {
+- (void)tapOnSave:(RSUIButton *)sender {
     NSLog(@"Tap On Save");
     NSMutableArray *colors = @[].mutableCopy;
     for (NSNumber *i in self.arr)
@@ -54,7 +54,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     self.view.hidden = YES;
 }
 
-- (void)makePaletteUnitsInRow:(UIView*)view withTag:(NSNumber*)t {
+- (void)makePaletteUnitsInRow:(UIView *)view withTag:(NSNumber *)t {
     NSInteger step = 0;
     int tmp = t.intValue;
     for (int i = 0; i < 6; i++)
@@ -69,7 +69,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     [self manageTapsOnUnitsInRow:view];
 }
 
-- (void)makeStyleForUnit:(RSPalleteUnit*)unit {
+- (void)makeStyleForUnit:(RSPalleteUnit *)unit {
     unit.backgroundColor = [UIColor whiteColor];
     UIBezierPath *shadowPath0 = [UIBezierPath bezierPathWithRoundedRect:unit.bounds cornerRadius:10];
     unit.layer.shadowPath = shadowPath0.CGPath;
@@ -98,7 +98,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     self.view.layer.masksToBounds = NO;
 }
 
-- (void)manageTapsOnUnitsInRow:(UIView*)row {
+- (void)manageTapsOnUnitsInRow:(UIView *)row {
     for (UIButton *unit in row.subviews)
     {
         if ([unit isKindOfClass:[RSPalleteUnit class]])
@@ -108,12 +108,12 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     }
 }
 
-- (void)setPaletteTime:(NSTimer*)timer {
+- (void)setPaletteTime:(NSTimer *)timer {
     self.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
     NSLog(@"palette timer...");
 }
 
-- (BOOL)checkSameElements:(RSPalleteUnit*)sender {
+- (BOOL)checkSameElements:(RSPalleteUnit *)sender {
     BOOL res = NO;
     if ([self.arr containsObject:@(sender.tag)])
     {
@@ -127,7 +127,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     return res;
 }
 
-- (void)tapOnUnit:(RSPalleteUnit*)sender {
+- (void)tapOnUnit:(RSPalleteUnit *)sender {
     self.state = active;
     BOOL check = [self checkSameElements:sender];
     if (!check)
@@ -165,7 +165,7 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
     //NSLog(@"arr: %@", self.arr);
 }
 
-- (void)resetSublayer:(UIButton*)view {
+- (void)resetSublayer:(UIButton *)view {
     CALayer *sublayer = [CALayer layer];
     sublayer.backgroundColor = view.layer.sublayers.lastObject.backgroundColor;
     sublayer.frame = CGRectMake(8, 8, 24, 24);

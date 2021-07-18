@@ -11,7 +11,7 @@
 #import "RSHeadView.h"
 #import "RSSchool_T8-Swift.h"
 @interface RSArtistVC ()
-
+@property (strong, nonatomic) NSArray<UIColor *> *colors;
 @end
 
 @implementation RSArtistVC
@@ -93,8 +93,8 @@
 - (void)tapOnDraw {
     self.state = ASDraw;
     RSHeadView *head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
+    head.colors = self.colors;
     [self.canvas addSubview:head];
-    
 }
 
 - (void)createPalletVC {
@@ -152,7 +152,14 @@
 }
 
 - (void)passChoosenColors:(NSArray<UIColor *> *)theValue {
-    NSLog(@"get colors: %@", theValue);
+    NSMutableArray *tmp = theValue.mutableCopy;
+    if (theValue.count < 3)
+    {
+        NSInteger blacks = 3 - theValue.count;
+        for (int i = 0; i < blacks; i++)
+            [tmp addObject:[UIColor blackColor]];
+    }
+    self.colors = tmp;
 }
 
 @end

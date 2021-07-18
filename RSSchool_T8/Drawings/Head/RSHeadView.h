@@ -10,8 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSHeadView : UIView
-@property (strong, nonatomic) NSMutableArray<CAShapeLayer*> *headLayers;
+@property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers;
 @property (weak, nonatomic) NSTimer *time;
+@property (strong, nonatomic) NSArray<UIColor *> *colors;
 @end
 
 NS_ASSUME_NONNULL_END
