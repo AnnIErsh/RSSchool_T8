@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray<NSArray<NSNumber *> *> *planetBeginPoints;
 @property (strong, nonatomic) NSArray<NSArray<NSNumber *> *> *treeBeginPoints;
 @property (strong, nonatomic) NSArray<NSArray<NSNumber *> *> *landscapeBeginPoints;
+@property (strong, nonatomic) NSArray<NSArray<CAShapeLayer *> *> *resultShape;
+@property (strong, nonatomic) NSArray<NSArray<NSNumber *> *> *resultBeginPoints;
 @end
 
 NS_ASSUME_NONNULL_END

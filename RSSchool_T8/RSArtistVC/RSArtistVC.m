@@ -9,12 +9,12 @@
 #import "RSUIButton.h"
 #import "RSPalletVC.h"
 #import "RSHeadView.h"
-
+#import "RSData.h"
 @interface RSArtistVC ()
 @property (strong, nonatomic) NSArray<UIColor *> *colors;
 @property (strong, nonatomic) RSHeadView *head;
 @property BOOL stopRedraw;
-@property BOOL firstLoad;
+@property (strong, nonatomic) RSData *data;
 @property (nonatomic) float timeValue;
 @end
 
@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.firstLoad = YES;
+    self.data = [RSData new];
     [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
     self.head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
     self.state = ASIdle;
@@ -91,6 +91,25 @@
 
 - (void)tapOnRightBarItem {
     RSDrawingsVC *drawVC = [[RSDrawingsVC alloc] initWithNibName:@"RSDrawingsVC" bundle:nil];
+    drawVC.delegate = self;
+    UILabel *middleItem = [UILabel new];
+    middleItem.frame = CGRectMake(0, 0, 79, 22);
+    middleItem.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    middleItem.font = [UIFont fontWithName:@"Montserrat-Regular" size:17];
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineHeightMultiple = 1.06;
+    middleItem.textAlignment = NSTextAlignmentCenter;
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"Drawings" attributes: @{
+        NSParagraphStyleAttributeName: paragraphStyle,
+                  NSKernAttributeName: @-0.41}];
+    middleItem.attributedText = string;
+    drawVC.navigationItem.titleView = middleItem;
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.13 green:0.692 blue:0.557 alpha:1];
+    self.navigationItem.backButtonTitle = @"Artist";
+    UIBarButtonItem *backbutton =  [[UIBarButtonItem alloc] initWithTitle:@"Artist" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [backbutton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithRed:0.13 green:0.692 blue:0.557 alpha:1], NSForegroundColorAttributeName, [UIFont fontWithName:@"Montserrat-Regular" size:17], NSFontAttributeName,
+                                        nil] forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = backbutton;
     [self.navigationController pushViewController:drawVC animated:NO];
 }
 
@@ -122,10 +141,9 @@
     {
         [self.time invalidate];
         self.time = nil;
-        NSLog(@"removed!");
+        NSLog(@"remover timer STOP!");
         [self.canvas.subviews.lastObject removeFromSuperview];
     }
-    NSLog(@"removing...");
 }
 
 - (void)tapOnDraw {
@@ -134,6 +152,8 @@
     self.head.delegate = self;
     self.head.colors = self.colors;
     self.head.interval = self.timeValue;
+    self.head.data.resultShape = self.data.resultShape;
+    self.head.data.resultBeginPoints = self.data.resultBeginPoints;
     [self.canvas addSubview:self.head];
 }
 
@@ -230,6 +250,29 @@
 
 - (void)getResultTimeWithTheValue:(float)theValue {
     self.timeValue = theValue;
-    NSLog(@"time interval %f", theValue);
 }
+
+- (void)getResultShapeWithTheValue:(NSString *)theValue {
+    if ([theValue isEqualToString:@"Head"])
+    {
+        self.data.resultShape = self.data.face;
+        self.data.resultBeginPoints = self.data.faceBeginPoints;
+    }
+    if ([theValue isEqualToString:@"Tree"])
+    {
+        self.data.resultShape = self.data.tree;
+        self.data.resultBeginPoints = self.data.treeBeginPoints;
+    }
+    if ([theValue isEqualToString:@"Planet"])
+    {
+        self.data.resultShape = self.data.planet;
+        self.data.resultBeginPoints = self.data.planetBeginPoints;
+    }
+    if ([theValue isEqualToString:@"Landscape"])
+    {
+        self.data.resultShape = self.data.landscape;
+        self.data.resultBeginPoints = self.data.landscapeBeginPoints;
+    }
+}
+
 @end

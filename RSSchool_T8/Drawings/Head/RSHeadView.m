@@ -23,6 +23,11 @@
 - (void)drawRect:(CGRect)rect {
     if (!self.interval)
         self.interval = 1;
+    if (!self.data.resultShape && !self.data.resultBeginPoints)
+    {
+        self.data.resultShape = self.data.face;
+        self.data.resultBeginPoints = self.data.faceBeginPoints;
+    }
     if (self.colors.count == 0)
     {
         UIColor *black = [UIColor blackColor];
@@ -99,7 +104,6 @@
     {
         [self.layer addSublayer:self.headLayers0[0]];
         [self.headLayers0 removeObjectAtIndex:0];
-        NSLog(@"timer0...");
     }
     else
     {
@@ -115,7 +119,6 @@
     {
         [self.layer addSublayer:self.headLayers1[0]];
         [self.headLayers1 removeObjectAtIndex:0];
-        NSLog(@"timer1...");
     }
     else
     {
@@ -131,7 +134,6 @@
     {
         [self.layer addSublayer:self.headLayers2[0]];
         [self.headLayers2 removeObjectAtIndex:0];
-        NSLog(@"timer2...");
     }
     else
     {
@@ -156,28 +158,27 @@
 
 - (UIBezierPath *)drawFirstStrokeWithPath {
     UIBezierPath *path0 = [UIBezierPath bezierPath];
-    [path0 moveToPoint:CGPointMake(self.data.faceBeginPoints[0][0].floatValue,
-                                   self.data.faceBeginPoints[0][1].floatValue)];
-    self.points0 = self.data.face[0];
+    [path0 moveToPoint:CGPointMake(self.data.resultBeginPoints[0][0].floatValue,
+                                   self.data.resultBeginPoints[0][1].floatValue)];
+    self.points0 = self.data.resultShape[0];
     return path0;
 }
 
 - (UIBezierPath *)drawSecondStrokeWithPath {
     UIBezierPath *path1 = [UIBezierPath bezierPath];
-    [path1 moveToPoint:CGPointMake(self.data.faceBeginPoints[1][0].floatValue,
-                                   self.data.faceBeginPoints[1][1].floatValue)];
-    self.points1 = self.data.face[1];
+    [path1 moveToPoint:CGPointMake(self.data.resultBeginPoints[1][0].floatValue,
+                                   self.data.resultBeginPoints[1][1].floatValue)];
+    self.points1 = self.data.resultShape[1];
     return path1;
 }
 
 - (UIBezierPath *)drawThirdStrokeWithPath {
     UIBezierPath *path2 = [UIBezierPath bezierPath];
-    [path2 moveToPoint:CGPointMake(self.data.faceBeginPoints[2][0].floatValue,
-                                   self.data.faceBeginPoints[2][1].floatValue)];
-    self.points2 = self.data.face[2];
+    [path2 moveToPoint:CGPointMake(self.data.resultBeginPoints[2][0].floatValue,
+                                   self.data.resultBeginPoints[2][1].floatValue)];
+    self.points2 = self.data.resultShape[2];
     return path2;
 }
-
 
 - (void)drawPath0:(UIBezierPath *)path0 path1:(UIBezierPath *)path1 andPath2:(UIBezierPath *)path2 {
     [self createPath:path0 forPoints:self.points0 withInterval:self.interval andColor:self.colors[0]];

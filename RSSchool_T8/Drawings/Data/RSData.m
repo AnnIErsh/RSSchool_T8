@@ -9,6 +9,11 @@
 
 @implementation RSData
 
+- (instancetype)init {
+    self = [super init];
+    return self;
+}
+
 - (NSArray<NSArray<CAShapeLayer *> *> *)face {
     float width = 300;
     float height = 300;

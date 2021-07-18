@@ -162,7 +162,6 @@ typedef enum RSPaletteUnitState RSPaletteUnitState;
             [self.arr addObject:@(sender.tag)];
         }
     }
-    //NSLog(@"arr: %@", self.arr);
 }
 
 - (void)resetSublayer:(UIButton *)view {
