@@ -25,6 +25,7 @@
     [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
     self.head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
     self.state = ASIdle;
+    [self createTimerVC];
     [self createPalletVC];
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
@@ -96,6 +97,11 @@
     [self.draw addTarget:self action:@selector(tapOnDraw) forControlEvents:UIControlEventTouchUpInside];
     [self.openPalette addTarget:self action:@selector(tapOnPallete) forControlEvents:UIControlEventTouchUpInside];
     [self.reset addTarget:self action:@selector(tapOnReset) forControlEvents:UIControlEventTouchUpInside];
+    [self.openTimer addTarget:self action:@selector(tapOnTimer) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)tapOnTimer {
+    self.childViewControllers.firstObject.view.hidden = NO;
 }
 
 - (void)tapOnReset {
@@ -127,6 +133,16 @@
     self.head.delegate = self;
     self.head.colors = self.colors;
     [self.canvas addSubview:self.head];
+}
+
+- (void)createTimerVC {
+    RSTimerVC *timerVC = [[RSTimerVC alloc] initWithNibName:@"RSTimerVC" bundle:nil];
+    [self addChildViewController:timerVC];
+    timerVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:timerVC.view];
+    [timerVC didMoveToParentViewController:self];
+    //timerVC.delegate = self;
+    timerVC.view.hidden = YES;
 }
 
 - (void)createPalletVC {

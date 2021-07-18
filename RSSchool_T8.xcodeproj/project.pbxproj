@@ -24,6 +24,8 @@
 		E7A5B7F026A0D5A40048B382 /* RSArtistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7EE26A0D5A40048B382 /* RSArtistVC.xib */; };
 		E7A5B7F626A0DBAE0048B382 /* RSDrawingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */; };
 		E7A5B7F726A0DBAE0048B382 /* RSDrawingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */; };
+		E7F3A59A26A4071800B39B8A /* RSTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59826A4071800B39B8A /* RSTimerVC.swift */; };
+		E7F3A59B26A4071800B39B8A /* RSTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F3A59926A4071800B39B8A /* RSTimerVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		E7A5B7F326A0DBAE0048B382 /* RSSchool_T8-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSchool_T8-Bridging-Header.h"; sourceTree = "<group>"; };
 		E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDrawingsVC.swift; sourceTree = "<group>"; };
 		E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSDrawingsVC.xib; sourceTree = "<group>"; };
+		E7F3A59826A4071800B39B8A /* RSTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerVC.swift; sourceTree = "<group>"; };
+		E7F3A59926A4071800B39B8A /* RSTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSTimerVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 		E7A5B79F26A0BD830048B382 /* RSSchool_T8 */ = {
 			isa = PBXGroup;
 			children = (
+				E7F3A59626A406BF00B39B8A /* RSTimerVC */,
 				E712A30226A3480700D6B3E4 /* Drawings */,
 				E712A30126A33B4B00D6B3E4 /* Protocols */,
 				E723493F26A227F50096D488 /* RSPalletVC */,
@@ -210,6 +215,15 @@
 				E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */,
 			);
 			path = RSDrawingsVC;
+			sourceTree = "<group>";
+		};
+		E7F3A59626A406BF00B39B8A /* RSTimerVC */ = {
+			isa = PBXGroup;
+			children = (
+				E7F3A59826A4071800B39B8A /* RSTimerVC.swift */,
+				E7F3A59926A4071800B39B8A /* RSTimerVC.xib */,
+			);
+			path = RSTimerVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +288,7 @@
 				E7A5B7B026A0BD850048B382 /* LaunchScreen.storyboard in Resources */,
 				E7A5B7E726A0CB590048B382 /* Montserrat-Medium.ttf in Resources */,
 				E7A5B7F026A0D5A40048B382 /* RSArtistVC.xib in Resources */,
+				E7F3A59B26A4071800B39B8A /* RSTimerVC.xib in Resources */,
 				E7A5B7F726A0DBAE0048B382 /* RSDrawingsVC.xib in Resources */,
 				E7A5B7AD26A0BD850048B382 /* Assets.xcassets in Resources */,
 			);
@@ -294,6 +309,7 @@
 				E712A30526A357FE00D6B3E4 /* RSHeadView.m in Sources */,
 				E712A2FF26A2F2D200D6B3E4 /* UIColor+RSColor.m in Sources */,
 				E723493E26A1B14B0096D488 /* RSUIButton.m in Sources */,
+				E7F3A59A26A4071800B39B8A /* RSTimerVC.swift in Sources */,
 				E723494C26A243FB0096D488 /* RSPalleteUnit.m in Sources */,
 				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
 			);
