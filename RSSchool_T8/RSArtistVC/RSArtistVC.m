@@ -12,19 +12,30 @@
 #import "RSSchool_T8-Swift.h"
 @interface RSArtistVC ()
 @property (strong, nonatomic) NSArray<UIColor *> *colors;
+@property (strong, nonatomic) RSHeadView *head;
+@property BOOL stopRedraw;
+@property BOOL firstLoad;
 @end
 
 @implementation RSArtistVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.firstLoad = YES;
     [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
+    self.head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
     self.state = ASIdle;
     [self createPalletVC];
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
     [self makeCanvas];
     [self addActionsOnButtons];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.stopRedraw)
+        self.head.noDraw = YES;
 }
 
 #pragma mark UI
@@ -89,14 +100,33 @@
 
 - (void)tapOnReset {
     self.state = ASIdle;
+    [self.time invalidate];
+    self.time = nil;
+    self.time = [NSTimer scheduledTimerWithTimeInterval:0.01
+                                                     target: self
+                                                   selector:@selector(deleteLayer)
+                                                   userInfo: nil repeats:YES];
+}
+
+- (void)deleteLayer {
+    if (self.canvas.subviews.lastObject.layer.sublayers.count > 0)
+        [self.canvas.subviews.lastObject.layer.sublayers.lastObject removeFromSuperlayer];
+    else
+    {
+        [self.time invalidate];
+        self.time = nil;
+        NSLog(@"removed!");
+        [self.canvas.subviews.lastObject removeFromSuperview];
+    }
+    NSLog(@"removing...");
 }
 
 - (void)tapOnDraw {
+    self.head.noDraw = NO;
     self.state = ASDraw;
-    RSHeadView *head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
-    head.delegate = self;
-    head.colors = self.colors;
-    [self.canvas addSubview:head];
+    self.head.delegate = self;
+    self.head.colors = self.colors;
+    [self.canvas addSubview:self.head];
 }
 
 - (void)createPalletVC {
@@ -174,7 +204,10 @@
 
 - (void)isReady:(BOOL)theValue {
     if (theValue)
+    {
         self.state = ASDone;
+        self.stopRedraw = YES;
+    }
 }
 
 @end

@@ -11,7 +11,11 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     _stop = NO;
-    _headLayers = @[].mutableCopy;
+    _stop1 = NO;
+    _stop2 = NO;
+    _headLayers0 = @[].mutableCopy;
+    _headLayers1 = @[].mutableCopy;
+    _headLayers2 = @[].mutableCopy;
     return [super initWithFrame:frame];
 }
 
@@ -30,16 +34,21 @@
         [randoms exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
     self.colors = randoms.copy;
-    [self drawFirstStrokeWithPath];
-    [self drawSecondStrokeWithPath];
-    [self drawThirdStrokeWithPath];
+    if (!self.noDraw)
+    {
+        [self drawFirstStrokeWithPath];
+        [self drawSecondStrokeWithPath];
+        [self drawThirdStrokeWithPath];
+    }
+    if (self.time && self.time1 && self.time2)
+        [self.delegate isReady:YES];
 }
 
 - (void)createPath:(UIBezierPath *)path forPoints:(NSArray *)points withInterval:(float)i andColor:(UIColor *)color {
     for (id point in points)
     {
         [path addLineToPoint:[point CGPointValue]];
-        [self.headLayers addObject:[self createLayerWithPath:path color:color andWidth:1]];
+        [self.headLayers0 addObject:[self createLayerWithPath:path color:color andWidth:1]];
     }
     [self.time invalidate];
     self.time = nil;
@@ -49,11 +58,39 @@
                                                    userInfo: nil repeats:YES];
 }
 
-- (void)addSublayerToCanvas {
-    if (self.headLayers.count > 0)
+- (void)createPath1:(UIBezierPath *)path forPoints:(NSArray *)points withInterval:(float)i andColor:(UIColor *)color {
+    for (id point in points)
     {
-        [self.layer addSublayer:self.headLayers[0]];
-        [self.headLayers removeObjectAtIndex:0];
+        [path addLineToPoint:[point CGPointValue]];
+        [self.headLayers1 addObject:[self createLayerWithPath:path color:color andWidth:1]];
+    }
+    [self.time1 invalidate];
+    self.time1 = nil;
+    self.time1 = [NSTimer scheduledTimerWithTimeInterval:i
+                                                     target: self
+                                                   selector:@selector(addSublayerToCanvas1)
+                                                   userInfo: nil repeats:YES];
+}
+
+- (void)createPath2:(UIBezierPath *)path forPoints:(NSArray *)points withInterval:(float)i andColor:(UIColor *)color {
+    for (id point in points)
+    {
+        [path addLineToPoint:[point CGPointValue]];
+        [self.headLayers2 addObject:[self createLayerWithPath:path color:color andWidth:1]];
+    }
+    [self.time2 invalidate];
+    self.time2 = nil;
+    self.time2 = [NSTimer scheduledTimerWithTimeInterval:i
+                                                     target: self
+                                                   selector:@selector(addSublayerToCanvas2)
+                                                   userInfo: nil repeats:YES];
+}
+
+- (void)addSublayerToCanvas {
+    if (self.headLayers0.count > 0)
+    {
+        [self.layer addSublayer:self.headLayers0[0]];
+        [self.headLayers0 removeObjectAtIndex:0];
     }
     else
     {
@@ -61,9 +98,43 @@
         self.time = nil;
         NSLog(@"STOP");
         self.stop = YES;
-        [self.delegate isReady:YES];
     }
     NSLog(@"timer...");
+}
+
+- (void)addSublayerToCanvas1 {
+    if (self.headLayers1.count > 0)
+    {
+
+        [self.layer addSublayer:self.headLayers1[0]];
+        [self.headLayers1 removeObjectAtIndex:0];
+        
+    }
+    else
+    {
+        [self.time1 invalidate];
+        self.time1 = nil;
+        NSLog(@"STOP1");
+        self.stop1 = YES;
+    }
+    NSLog(@"timer1...");
+}
+
+- (void)addSublayerToCanvas2 {
+    if (self.headLayers2.count > 0)
+    {
+        
+        [self.layer addSublayer:self.headLayers2[0]];
+        [self.headLayers2 removeObjectAtIndex:0];
+    }
+    else
+    {
+        [self.time2 invalidate];
+        self.time2 = nil;
+        NSLog(@"STOP2");
+        self.stop2 = YES;
+    }
+    NSLog(@"timer2...");
 }
 
 - (CAShapeLayer*)createLayerWithPath:(UIBezierPath *)path color:(UIColor *)color andWidth:(NSInteger)w {
@@ -74,6 +145,7 @@
     layer.lineJoin = kCALineJoinRound;
     layer.lineCap = kCALineCapRound;
     layer.path = path.CGPath;
+    layer.opacity = 1;
     return layer;
 }
 
@@ -98,7 +170,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.62059*width, 0.23676*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.61471*width, 0.30441*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.62647*width, 0.34118*height)], nil];
-    [self createPath:path0 forPoints:points withInterval:0.1 andColor:self.colors[0]];
+    [self createPath:path0 forPoints:points withInterval:0.01 andColor:self.colors[0]];
 }
 
 - (void)drawSecondStrokeWithPath {
@@ -145,7 +217,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.57206*width, 0.30735*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.58676*width, 0.32206*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.60882*width, 0.33529*height)], nil];
-    [self createPath:path1 forPoints:points withInterval:0.1 andColor:self.colors[1]];
+    [self createPath1:path1 forPoints:points withInterval:0.01 andColor:self.colors[1]];
 }
 
 - (void)drawThirdStrokeWithPath {
@@ -200,7 +272,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.74265*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.82647*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.87941*height)], nil];
-    [self createPath:path2 forPoints:points withInterval:0.1 andColor:self.colors[2]];
+    [self createPath2:path2 forPoints:points withInterval:0.01 andColor:self.colors[2]];
 }
 
 @end

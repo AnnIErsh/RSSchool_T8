@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet RSUIButton *share;
 @property (weak, nonatomic) IBOutlet RSUIButton *draw;
 @property (weak, nonatomic) IBOutlet RSUIButton *reset;
+@property (weak) NSTimer *time;
 @property (nonatomic) RSArtistState state;
 
 @end
