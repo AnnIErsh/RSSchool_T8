@@ -9,12 +9,13 @@
 #import "RSUIButton.h"
 #import "RSPalletVC.h"
 #import "RSHeadView.h"
-#import "RSSchool_T8-Swift.h"
+
 @interface RSArtistVC ()
 @property (strong, nonatomic) NSArray<UIColor *> *colors;
 @property (strong, nonatomic) RSHeadView *head;
 @property BOOL stopRedraw;
 @property BOOL firstLoad;
+@property (nonatomic) float timeValue;
 @end
 
 @implementation RSArtistVC
@@ -141,7 +142,7 @@
     timerVC.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:timerVC.view];
     [timerVC didMoveToParentViewController:self];
-    //timerVC.delegate = self;
+    timerVC.delegate = self;
     timerVC.view.hidden = YES;
 }
 
@@ -226,4 +227,8 @@
     }
 }
 
+- (void)getResultTimeWithTheValue:(float)theValue {
+    self.timeValue = theValue;
+    NSLog(@"time is: %f", theValue);
+}
 @end

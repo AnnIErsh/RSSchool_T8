@@ -9,9 +9,10 @@
 #import "RSArtistState.h"
 #import "RSpaletteVCDelegate.h"
 #import "RSDrawStateDelegate.h"
+#import "RSSchool_T8-Swift.h"
 @class RSUIButton;
 NS_ASSUME_NONNULL_BEGIN
-@interface RSArtistVC : UIViewController <RSpaletteVCDelegate, RSDrawStateDelegate> 
+@interface RSArtistVC : UIViewController <RSpaletteVCDelegate, RSDrawStateDelegate, RSTimerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet RSUIButton *openPalette;
 @property (weak, nonatomic) IBOutlet RSUIButton *openTimer;

@@ -26,6 +26,7 @@
 		E7A5B7F726A0DBAE0048B382 /* RSDrawingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */; };
 		E7F3A59A26A4071800B39B8A /* RSTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59826A4071800B39B8A /* RSTimerVC.swift */; };
 		E7F3A59B26A4071800B39B8A /* RSTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F3A59926A4071800B39B8A /* RSTimerVC.xib */; };
+		E7F3A59F26A4536B00B39B8A /* RSTimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSDrawingsVC.xib; sourceTree = "<group>"; };
 		E7F3A59826A4071800B39B8A /* RSTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerVC.swift; sourceTree = "<group>"; };
 		E7F3A59926A4071800B39B8A /* RSTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSTimerVC.xib; sourceTree = "<group>"; };
+		E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				E712A30026A33B1600D6B3E4 /* RSpaletteVCDelegate.h */,
 				E712A30726A3BCDA00D6B3E4 /* RSDrawStateDelegate.h */,
+				E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				E712A2FF26A2F2D200D6B3E4 /* UIColor+RSColor.m in Sources */,
 				E723493E26A1B14B0096D488 /* RSUIButton.m in Sources */,
 				E7F3A59A26A4071800B39B8A /* RSTimerVC.swift in Sources */,
+				E7F3A59F26A4536B00B39B8A /* RSTimerDelegate.swift in Sources */,
 				E723494C26A243FB0096D488 /* RSPalleteUnit.m in Sources */,
 				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
 			);

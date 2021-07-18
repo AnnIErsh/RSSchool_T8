@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="leftTime" destination="zWI-Ff-ocN" id="xNa-Di-R7M"/>
                 <outlet property="rightTime" destination="nsE-zE-0q6" id="KFg-f0-DMb"/>
+                <outlet property="sliderTime" destination="Wdk-lx-KdQ" id="no2-rk-kcj"/>
                 <outlet property="time" destination="LQu-l1-DWx" id="GE5-4V-LmW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,18 +26,12 @@
                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Wdk-lx-KdQ">
                     <rect key="frame" x="76" y="112" width="223" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <action selector="sliderTime:" destination="-1" eventType="valueChanged" id="pFh-dv-NTu"/>
-                    </connections>
                 </slider>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg2-ln-IaE" customClass="RSUIButton">
                     <rect key="frame" x="242" y="20" width="85" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                     <state key="normal" title="Save"/>
-                    <connections>
-                        <action selector="saveTime:" destination="-1" eventType="touchUpInside" id="urT-pN-B8F"/>
-                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWI-Ff-ocN">
                     <rect key="frame" x="35" y="116" width="8" height="21"/>
@@ -53,7 +48,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQu-l1-DWx">
-                    <rect key="frame" x="161" y="161" width="52" height="21"/>
+                    <rect key="frame" x="149" y="161" width="76" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>

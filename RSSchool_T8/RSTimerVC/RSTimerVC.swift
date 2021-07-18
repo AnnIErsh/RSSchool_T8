@@ -7,19 +7,40 @@
 
 import UIKit
 
-class RSTimerVC: UIViewController {
+@objcMembers class RSTimerVC: UIViewController {
 
     @IBOutlet weak var rightTime: UILabel!
     @IBOutlet weak var time: UILabel!
-    @IBAction func sliderTime(_ sender: Any) {
-    }
-    @IBAction func saveTime(_ sender: Any) {
-    }
     @IBOutlet weak var leftTime: UILabel!
+    @IBOutlet weak var sliderTime: UISlider!
+    @objc weak var delegate: RSTimerDelegate?
+    var result: Float {
+        sliderTime.value
+    }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         makeViewUI()
+        sliderTime.addTarget(self, action: #selector(tapOnSlideratime), for: .valueChanged)
+        for button in self.view.subviews
+        {
+            if button is UIButton
+            {
+                let tmp = button as! UIButton
+                tmp.addTarget(self, action: #selector(tapOnSave), for: .touchUpInside)
+            }
+        }
+    }
+    
+    @objc func tapOnSlideratime(_ sender: UISlider) {
+        let val = sliderTime.value
+        let str = String(format: "%.2f", val)
+        time.text = "\(str) s";
+    }
+    
+    @objc func tapOnSave(_ sender: UIButton) {
+        self.view.isHidden = true
+        delegate?.getResultTime(theValue: result)
     }
     
     func makeViewUI() {
@@ -27,13 +48,18 @@ class RSTimerVC: UIViewController {
         self.view.layer.shadowPath = shadowPath0.cgPath
         self.view.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         self.view.layer.shadowOffset = .zero
-        self.view.layer.shadowOpacity = 1;
-        self.view.layer.shadowRadius = 4;
-        self.view.layer.cornerRadius = 45;
+        self.view.layer.shadowOpacity = 1
+        self.view.layer.shadowRadius = 4
+        self.view.layer.cornerRadius = 45
         self.view.layer.masksToBounds = false
-        time.text = "2.40 s"
+        sliderTime.minimumValue = 1
+        sliderTime.maximumValue = 5
+        sliderTime.value = 1;
+        sliderTime.tintColor = UIColor(red: 0.13, green: 0.692, blue: 0.557, alpha: 1)
+        time.text = "\(sliderTime.value)"
         leftTime.text = "1"
         rightTime.text = "5"
+        time.textAlignment = .center
         for label in self.view.subviews
         {
             if (label is UILabel)
