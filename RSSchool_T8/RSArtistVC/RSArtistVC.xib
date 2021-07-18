@@ -15,6 +15,7 @@
                 <outlet property="draw" destination="dOF-nR-D2h" id="Rfp-rc-PQ4"/>
                 <outlet property="openPalette" destination="whz-ce-a2J" id="xEO-vM-TZV"/>
                 <outlet property="openTimer" destination="eDr-kZ-uaf" id="9hY-QJ-7sp"/>
+                <outlet property="reset" destination="tvn-hn-Z48" id="s4F-9l-Ka9"/>
                 <outlet property="share" destination="rTT-Ms-LFK" id="SIf-Ad-Efv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -52,6 +53,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                     <state key="normal" title="Share"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvn-hn-Z48" customClass="RSUIButton">
+                    <rect key="frame" x="243" y="452" width="91" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <state key="normal" title="Reset"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

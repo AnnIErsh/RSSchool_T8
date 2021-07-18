@@ -18,17 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
+    self.state = ASIdle;
     [self createPalletVC];
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
     [self makeCanvas];
+    self.reset.userInteractionEnabled = NO;
+    self.reset.hidden = YES;
     [self addActionsOnButtons];
-    [self checkState];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.state = ASIdle;
-    [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark UI
@@ -160,8 +158,19 @@
                 }
                 else
                 {
-                    [button setUserInteractionEnabled:YES];
-                    [button setAlpha:1];
+                    if ([button.titleLabel.text isEqualToString:@"Draw"])
+                    {
+                        NSLog(@"RESET");
+                        button.hidden = YES;
+                        [button setUserInteractionEnabled:NO];
+                        self.reset.hidden = NO;
+                        self.reset.userInteractionEnabled = YES;
+                    }
+                    else
+                    {
+                        [button setUserInteractionEnabled:YES];
+                        [button setAlpha:1];
+                    }
                 }
             }
         }
