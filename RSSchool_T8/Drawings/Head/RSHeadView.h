@@ -7,10 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "RSDrawStateDelegate.h"
-
+#import "RSData.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSHeadView : UIView
+@property (strong, nonatomic) RSData *data;
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers0;
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers1;
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers2;
@@ -23,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL stop2;
 @property (nonatomic, weak) id <RSDrawStateDelegate> delegate;
 @property (nonatomic) BOOL noDraw;;
+@property (nonatomic) float interval;
+@property (nonatomic, strong) NSArray *points0;
+@property (nonatomic, strong) NSArray *points1;
+@property (nonatomic, strong) NSArray *points2;
 @end
 
 NS_ASSUME_NONNULL_END

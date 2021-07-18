@@ -109,7 +109,7 @@
     self.state = ASIdle;
     [self.time invalidate];
     self.time = nil;
-    self.time = [NSTimer scheduledTimerWithTimeInterval:0.01
+    self.time = [NSTimer scheduledTimerWithTimeInterval: 0.005
                                                      target: self
                                                    selector:@selector(deleteLayer)
                                                    userInfo: nil repeats:YES];
@@ -133,6 +133,7 @@
     self.state = ASDraw;
     self.head.delegate = self;
     self.head.colors = self.colors;
+    self.head.interval = self.timeValue;
     [self.canvas addSubview:self.head];
 }
 
@@ -229,6 +230,6 @@
 
 - (void)getResultTimeWithTheValue:(float)theValue {
     self.timeValue = theValue;
-    NSLog(@"time is: %f", theValue);
+    NSLog(@"time interval %f", theValue);
 }
 @end

@@ -24,6 +24,7 @@
 		E7A5B7F026A0D5A40048B382 /* RSArtistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7EE26A0D5A40048B382 /* RSArtistVC.xib */; };
 		E7A5B7F626A0DBAE0048B382 /* RSDrawingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */; };
 		E7A5B7F726A0DBAE0048B382 /* RSDrawingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */; };
+		E7D75D3926A4799B002969D3 /* RSData.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D75D3826A4799B002969D3 /* RSData.m */; };
 		E7F3A59A26A4071800B39B8A /* RSTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59826A4071800B39B8A /* RSTimerVC.swift */; };
 		E7F3A59B26A4071800B39B8A /* RSTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F3A59926A4071800B39B8A /* RSTimerVC.xib */; };
 		E7F3A59F26A4536B00B39B8A /* RSTimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */; };
@@ -61,6 +62,8 @@
 		E7A5B7F326A0DBAE0048B382 /* RSSchool_T8-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSchool_T8-Bridging-Header.h"; sourceTree = "<group>"; };
 		E7A5B7F426A0DBAE0048B382 /* RSDrawingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDrawingsVC.swift; sourceTree = "<group>"; };
 		E7A5B7F526A0DBAE0048B382 /* RSDrawingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSDrawingsVC.xib; sourceTree = "<group>"; };
+		E7D75D3726A4799B002969D3 /* RSData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSData.h; sourceTree = "<group>"; };
+		E7D75D3826A4799B002969D3 /* RSData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSData.m; sourceTree = "<group>"; };
 		E7F3A59826A4071800B39B8A /* RSTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerVC.swift; sourceTree = "<group>"; };
 		E7F3A59926A4071800B39B8A /* RSTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSTimerVC.xib; sourceTree = "<group>"; };
 		E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		E712A30226A3480700D6B3E4 /* Drawings */ = {
 			isa = PBXGroup;
 			children = (
+				E7D75D3626A47978002969D3 /* Data */,
 				E712A30626A3580900D6B3E4 /* Head */,
 			);
 			path = Drawings;
@@ -220,6 +224,15 @@
 			path = RSDrawingsVC;
 			sourceTree = "<group>";
 		};
+		E7D75D3626A47978002969D3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E7D75D3726A4799B002969D3 /* RSData.h */,
+				E7D75D3826A4799B002969D3 /* RSData.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		E7F3A59626A406BF00B39B8A /* RSTimerVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +329,7 @@
 				E7F3A59F26A4536B00B39B8A /* RSTimerDelegate.swift in Sources */,
 				E723494C26A243FB0096D488 /* RSPalleteUnit.m in Sources */,
 				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
+				E7D75D3926A4799B002969D3 /* RSData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

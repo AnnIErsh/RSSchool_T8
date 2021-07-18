@@ -10,6 +10,7 @@
 @implementation RSHeadView
 
 - (instancetype)initWithFrame:(CGRect)frame {
+    _data = [RSData new];
     _stop = NO;
     _stop1 = NO;
     _stop2 = NO;
@@ -20,6 +21,8 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    if (!self.interval)
+        self.interval = 1;
     if (self.colors.count == 0)
     {
         UIColor *black = [UIColor blackColor];
@@ -36,9 +39,14 @@
     self.colors = randoms.copy;
     if (!self.noDraw)
     {
-        [self drawFirstStrokeWithPath];
-        [self drawSecondStrokeWithPath];
-        [self drawThirdStrokeWithPath];
+        UIBezierPath *path0 = [self drawFirstStrokeWithPath];
+        UIBezierPath *path1 = [self drawSecondStrokeWithPath];
+        UIBezierPath *path2 = [self drawThirdStrokeWithPath];
+        float deltaS = self.points0.count;
+        self.points1.count > self.points0.count ? deltaS = self.points1.count : deltaS;
+        self.points2.count > deltaS ? deltaS = self.points2.count : deltaS;
+        self.interval /= deltaS;
+        [self drawPath0:path0 path1:path1 andPath2:path2];
     }
     if (self.time && self.time1 && self.time2)
         [self.delegate isReady:YES];
@@ -91,50 +99,47 @@
     {
         [self.layer addSublayer:self.headLayers0[0]];
         [self.headLayers0 removeObjectAtIndex:0];
+        NSLog(@"timer0...");
     }
     else
     {
         [self.time invalidate];
         self.time = nil;
-        NSLog(@"STOP");
+        NSLog(@"STOP0");
         self.stop = YES;
     }
-    NSLog(@"timer...");
 }
 
 - (void)addSublayerToCanvas1 {
     if (self.headLayers1.count > 0)
     {
-
         [self.layer addSublayer:self.headLayers1[0]];
         [self.headLayers1 removeObjectAtIndex:0];
-        
+        NSLog(@"timer1...");
     }
     else
     {
         [self.time1 invalidate];
         self.time1 = nil;
-        NSLog(@"STOP1");
         self.stop1 = YES;
+        NSLog(@"STOP1");
     }
-    NSLog(@"timer1...");
 }
 
 - (void)addSublayerToCanvas2 {
     if (self.headLayers2.count > 0)
     {
-        
         [self.layer addSublayer:self.headLayers2[0]];
         [self.headLayers2 removeObjectAtIndex:0];
+        NSLog(@"timer2...");
     }
     else
     {
         [self.time2 invalidate];
         self.time2 = nil;
-        NSLog(@"STOP2");
         self.stop2 = YES;
+        NSLog(@"STOP2");
     }
-    NSLog(@"timer2...");
 }
 
 - (CAShapeLayer*)createLayerWithPath:(UIBezierPath *)path color:(UIColor *)color andWidth:(NSInteger)w {
@@ -149,130 +154,36 @@
     return layer;
 }
 
-- (void)drawFirstStrokeWithPath {
+- (UIBezierPath *)drawFirstStrokeWithPath {
     UIBezierPath *path0 = [UIBezierPath bezierPath];
-    float width = 300;
-    float height = 300;
-    [path0 moveToPoint:CGPointMake(0.23971*width, 0.14412*height)];
-    NSArray *points = [NSArray arrayWithObjects:
-                       [NSValue valueWithCGPoint:CGPointMake(0.28529*width, 0.32059*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.32059*width, 0.38824*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.37206*width, 0.44559*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.45147*width, 0.51176*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.52059*width, 0.52794*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.62647*width, 0.47647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.70588*width, 0.38824*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.73088*width, 0.35294*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.73088*width, 0.28676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.73676*width, 0.20735*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.70147*width, 0.17794*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.65294*width, 0.18676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.62059*width, 0.23676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.61471*width, 0.30441*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.62647*width, 0.34118*height)], nil];
-    [self createPath:path0 forPoints:points withInterval:0.01 andColor:self.colors[0]];
+    [path0 moveToPoint:CGPointMake(self.data.faceBeginPoints[0][0].floatValue,
+                                   self.data.faceBeginPoints[0][1].floatValue)];
+    self.points0 = self.data.face[0];
+    return path0;
 }
 
-- (void)drawSecondStrokeWithPath {
+- (UIBezierPath *)drawSecondStrokeWithPath {
     UIBezierPath *path1 = [UIBezierPath bezierPath];
-    float width = 300;
-    float height = 300;
-    [path1 moveToPoint:CGPointMake(0.6*width, 0.35294*height)];
-    NSArray *points = [NSArray arrayWithObjects:
-                       [NSValue valueWithCGPoint:CGPointMake(0.575*width, 0.34853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.54706*width, 0.35441*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.52353*width, 0.35735*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.49559*width, 0.35441*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.47059*width, 0.35*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.45147*width, 0.34853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.42941*width, 0.35294*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.41618*width, 0.35882*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.43382*width, 0.36618*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.44706*width, 0.37647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.46029*width, 0.39118*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.47794*width, 0.39853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.5*width, 0.40147*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.52059*width, 0.39853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.54265*width, 0.40147*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.56029*width, 0.39853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.57941*width, 0.38676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.6*width, 0.36324*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.61324*width, 0.34559*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.58971*width, 0.34265*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.56324*width, 0.33971*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.53676*width, 0.33382*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.51176*width, 0.33235*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.48235*width, 0.33676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.45588*width, 0.34265*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.42647*width, 0.34559*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.40588*width, 0.34412*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.43382*width, 0.32647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.46029*width, 0.30735*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.47794*width, 0.29706*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.49265*width, 0.30147*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.50882*width, 0.30735*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.52794*width, 0.30441*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.54706*width, 0.30147*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.56324*width, 0.30147*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.57206*width, 0.30735*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.58676*width, 0.32206*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.60882*width, 0.33529*height)], nil];
-    [self createPath1:path1 forPoints:points withInterval:0.01 andColor:self.colors[1]];
+    [path1 moveToPoint:CGPointMake(self.data.faceBeginPoints[1][0].floatValue,
+                                   self.data.faceBeginPoints[1][1].floatValue)];
+    self.points1 = self.data.face[1];
+    return path1;
 }
 
-- (void)drawThirdStrokeWithPath {
+- (UIBezierPath *)drawThirdStrokeWithPath {
     UIBezierPath *path2 = [UIBezierPath bezierPath];
-    float width = 300;
-    float height = 300;
-    [path2 moveToPoint:CGPointMake(0.61618*width, 0.36029*height)];
-    NSArray *points = [NSArray arrayWithObjects:
-                       [NSValue valueWithCGPoint:CGPointMake(0.62941*width, 0.37794*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.63676*width, 0.39706*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.62647*width, 0.42353*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.60588*width, 0.44853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.57941*width, 0.46912*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.55147*width, 0.44853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.52059*width, 0.43676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.49265*width, 0.43676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.45735*width, 0.44853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.43382*width, 0.47647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.41471*width, 0.51324*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.38088*width, 0.49265*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.35735*width, 0.46324*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.33235*width, 0.43676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.33235*width, 0.47647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.33235*width, 0.56029*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.33235*width, 0.61029*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.31176*width, 0.64412*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.27794*width, 0.66912*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.24559*width, 0.68971*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.29706*width, 0.70882*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.33676*width, 0.73382*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.36765*width, 0.775*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.40882*width, 0.82647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.46471*width, 0.87941*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.52059*width, 0.89853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.56176*width, 0.89853*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.60588*width, 0.875*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.64559*width, 0.82647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.675*width, 0.76324*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.70294*width, 0.71618*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.74559*width, 0.69706*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.75588*width, 0.69706*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.73676*width, 0.65147*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.70882*width, 0.56765*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.70294*width, 0.5*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.70294*width, 0.43088*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.68235*width, 0.46324*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.65882*width, 0.48676*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.63676*width, 0.51324*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.58824*width, 0.56029*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.55882*width, 0.60294*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.53382*width, 0.66618*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.74265*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.82647*height)],
-                       [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.87941*height)], nil];
-    [self createPath2:path2 forPoints:points withInterval:0.01 andColor:self.colors[2]];
+    [path2 moveToPoint:CGPointMake(self.data.faceBeginPoints[2][0].floatValue,
+                                   self.data.faceBeginPoints[2][1].floatValue)];
+    self.points2 = self.data.face[2];
+    return path2;
+}
+
+
+- (void)drawPath0:(UIBezierPath *)path0 path1:(UIBezierPath *)path1 andPath2:(UIBezierPath *)path2 {
+    [self createPath:path0 forPoints:self.points0 withInterval:self.interval andColor:self.colors[0]];
+    [self createPath1:path1 forPoints:self.points1 withInterval:self.interval andColor:self.colors[1]];
+    [self createPath2:path2 forPoints:self.points2 withInterval:self.interval andColor:self.colors[2]];
 }
 
 @end
+
