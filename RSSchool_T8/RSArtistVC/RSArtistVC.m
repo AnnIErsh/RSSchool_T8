@@ -24,8 +24,6 @@
     [self makeTitleItem];
     [self makeRightBarButtonIntem];
     [self makeCanvas];
-    self.reset.userInteractionEnabled = NO;
-    self.reset.hidden = YES;
     [self addActionsOnButtons];
 }
 
@@ -86,6 +84,11 @@
 - (void)addActionsOnButtons {
     [self.draw addTarget:self action:@selector(tapOnDraw) forControlEvents:UIControlEventTouchUpInside];
     [self.openPalette addTarget:self action:@selector(tapOnPallete) forControlEvents:UIControlEventTouchUpInside];
+    [self.reset addTarget:self action:@selector(tapOnReset) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)tapOnReset {
+    self.state = ASIdle;
 }
 
 - (void)tapOnDraw {
@@ -113,25 +116,17 @@
 - (void)checkState {
     if (self.state == ASIdle)
     {
-        for (UIButton *button in self.view.subviews)
-        {
-            if (self.state == ASIdle)
-            {
-                if ([button isKindOfClass:[RSUIButton class]])
-                {
-                    if ([button.titleLabel.text isEqualToString:@"Share"])
-                    {
-                        [button setUserInteractionEnabled:NO];
-                        [button setAlpha:0.5];
-                    }
-                    else
-                    {
-                        [button setUserInteractionEnabled:YES];
-                        [button setAlpha:1];
-                    }
-                }
-            }
-        }
+        self.openPalette.userInteractionEnabled = YES;
+        self.openPalette.alpha = 1;
+        self.openTimer.userInteractionEnabled = YES;
+        self.openTimer.alpha = 1;
+        self.reset.userInteractionEnabled = NO;
+        self.reset.hidden = YES;
+        self.draw.hidden = NO;
+        self.draw.userInteractionEnabled = YES;
+        self.draw.alpha = 1;
+        self.share.userInteractionEnabled = NO;
+        self.share.alpha = 0.5;
     }
     if (self.state == ASDraw)
     {
@@ -146,34 +141,17 @@
     }
     if (self.state == ASDone)
     {
-        for (UIButton *button in self.view.subviews)
-        {
-            if ([button isKindOfClass:[RSUIButton class]])
-            {
-                if ([button.titleLabel.text isEqualToString:@"Open Palette"] ||
-                    [button.titleLabel.text isEqualToString:@"Open Timer"])
-                {
-                    [button setUserInteractionEnabled:NO];
-                    [button setAlpha:0.5];
-                }
-                else
-                {
-                    if ([button.titleLabel.text isEqualToString:@"Draw"])
-                    {
-                        NSLog(@"RESET");
-                        button.hidden = YES;
-                        [button setUserInteractionEnabled:NO];
-                        self.reset.hidden = NO;
-                        self.reset.userInteractionEnabled = YES;
-                    }
-                    else
-                    {
-                        [button setUserInteractionEnabled:YES];
-                        [button setAlpha:1];
-                    }
-                }
-            }
-        }
+        self.share.alpha = 1;
+        self.share.userInteractionEnabled = YES;
+        self.draw.userInteractionEnabled = NO;
+        self.draw.hidden = YES;
+        self.reset.hidden = NO;
+        self.reset.userInteractionEnabled = YES;
+        self.reset.alpha = 1;
+        self.openPalette.userInteractionEnabled = NO;
+        self.openPalette.alpha = 0.5;
+        self.openTimer.userInteractionEnabled = NO;
+        self.openTimer.alpha = 0.5;
     }
 }
 
