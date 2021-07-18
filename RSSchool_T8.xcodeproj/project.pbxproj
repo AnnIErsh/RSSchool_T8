@@ -32,6 +32,7 @@
 		E712A30026A33B1600D6B3E4 /* RSpaletteVCDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSpaletteVCDelegate.h; sourceTree = "<group>"; };
 		E712A30326A357FE00D6B3E4 /* RSHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHeadView.h; sourceTree = "<group>"; };
 		E712A30426A357FE00D6B3E4 /* RSHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSHeadView.m; sourceTree = "<group>"; };
+		E712A30726A3BCDA00D6B3E4 /* RSDrawStateDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSDrawStateDelegate.h; sourceTree = "<group>"; };
 		E723493C26A1B14B0096D488 /* RSUIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIButton.h; sourceTree = "<group>"; };
 		E723493D26A1B14B0096D488 /* RSUIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIButton.m; sourceTree = "<group>"; };
 		E723494326A228EC0096D488 /* RSPalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPalletVC.h; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				E712A30026A33B1600D6B3E4 /* RSpaletteVCDelegate.h */,
+				E712A30726A3BCDA00D6B3E4 /* RSDrawStateDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

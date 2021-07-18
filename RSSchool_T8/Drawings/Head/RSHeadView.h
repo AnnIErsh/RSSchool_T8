@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSDrawStateDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers;
 @property (weak, nonatomic) NSTimer *time;
 @property (strong, nonatomic) NSArray<UIColor *> *colors;
+@property (nonatomic) BOOL stop;
+@property (nonatomic, weak) id <RSDrawStateDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

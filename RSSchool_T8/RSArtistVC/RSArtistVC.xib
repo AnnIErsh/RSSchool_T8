@@ -33,7 +33,7 @@
                     <rect key="frame" x="20" y="452" width="163" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                    <state key="normal" title="Open Palette "/>
+                    <state key="normal" title="Open Palette"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOF-nR-D2h" customClass="RSUIButton">
                     <rect key="frame" x="243" y="452" width="91" height="32"/>

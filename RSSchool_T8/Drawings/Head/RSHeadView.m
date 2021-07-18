@@ -10,11 +10,17 @@
 @implementation RSHeadView
 
 - (instancetype)initWithFrame:(CGRect)frame {
+    _stop = NO;
     _headLayers = @[].mutableCopy;
     return [super initWithFrame:frame];
 }
 
 - (void)drawRect:(CGRect)rect {
+    if (self.colors.count == 0)
+    {
+        UIColor *black = [UIColor blackColor];
+        self.colors = @[black, black, black];
+    }
     NSMutableArray<UIColor *> *randoms = self.colors.mutableCopy;
     NSUInteger count = [self.colors count];
     for (NSUInteger i = 0; i < count; i++)
@@ -54,6 +60,8 @@
         [self.time invalidate];
         self.time = nil;
         NSLog(@"STOP");
+        self.stop = YES;
+        [self.delegate isReady:YES];
     }
     NSLog(@"timer...");
 }
@@ -90,7 +98,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.62059*width, 0.23676*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.61471*width, 0.30441*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.62647*width, 0.34118*height)], nil];
-    [self createPath:path0 forPoints:points withInterval:0.01 andColor:self.colors[0]];
+    [self createPath:path0 forPoints:points withInterval:0.1 andColor:self.colors[0]];
 }
 
 - (void)drawSecondStrokeWithPath {
@@ -137,7 +145,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.57206*width, 0.30735*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.58676*width, 0.32206*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.60882*width, 0.33529*height)], nil];
-    [self createPath:path1 forPoints:points withInterval:0.01 andColor:self.colors[1]];
+    [self createPath:path1 forPoints:points withInterval:0.1 andColor:self.colors[1]];
 }
 
 - (void)drawThirdStrokeWithPath {
@@ -192,7 +200,7 @@
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.74265*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.82647*height)],
                        [NSValue valueWithCGPoint:CGPointMake(0.525*width, 0.87941*height)], nil];
-    [self createPath:path2 forPoints:points withInterval:0.01 andColor:self.colors[2]];
+    [self createPath:path2 forPoints:points withInterval:0.1 andColor:self.colors[2]];
 }
 
 @end

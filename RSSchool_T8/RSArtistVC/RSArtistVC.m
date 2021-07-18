@@ -93,6 +93,7 @@
 - (void)tapOnDraw {
     self.state = ASDraw;
     RSHeadView *head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
+    head.delegate = self;
     head.colors = self.colors;
     [self.canvas addSubview:head];
 }
@@ -145,11 +146,33 @@
             }
         }
     }
+    if (self.state == ASDone)
+    {
+        for (UIButton *button in self.view.subviews)
+        {
+            if ([button isKindOfClass:[RSUIButton class]])
+            {
+                if ([button.titleLabel.text isEqualToString:@"Open Palette"] ||
+                    [button.titleLabel.text isEqualToString:@"Open Timer"])
+                {
+                    [button setUserInteractionEnabled:NO];
+                    [button setAlpha:0.5];
+                }
+                else
+                {
+                    [button setUserInteractionEnabled:YES];
+                    [button setAlpha:1];
+                }
+            }
+        }
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     [self checkState];
 }
+
+#pragma mark Delegations
 
 - (void)passChoosenColors:(NSArray<UIColor *> *)theValue {
     NSMutableArray *tmp = theValue.mutableCopy;
@@ -160,6 +183,11 @@
             [tmp addObject:[UIColor blackColor]];
     }
     self.colors = tmp;
+}
+
+- (void)isReady:(BOOL)theValue {
+    if (theValue)
+        self.state = ASDone;
 }
 
 @end
