@@ -1,16 +1,15 @@
 //
-//  RSHeadView.h
+//  RSTreeView.h
 //  RSSchool_T8
 //
-//  Created by Anna Ershova on 17.07.2021.
+//  Created by Anna Ershova on 19.07.2021.
 //
 
 #import <UIKit/UIKit.h>
 #import "RSDrawStateDelegate.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RSHeadView : UIView
-
+@interface RSTreeView : UIView
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers0;
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers1;
 @property (strong, nonatomic) NSMutableArray<CAShapeLayer *> *headLayers2;
@@ -24,9 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id <RSDrawStateDelegate> delegate;
 @property (nonatomic) BOOL noDraw;;
 @property (nonatomic) float interval;
-@property (nonatomic, strong) NSArray *points0;
-@property (nonatomic, strong) NSArray *points1;
-@property (nonatomic, strong) NSArray *points2;
 @end
 
 NS_ASSUME_NONNULL_END

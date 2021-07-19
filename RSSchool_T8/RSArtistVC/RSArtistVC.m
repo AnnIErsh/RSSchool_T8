@@ -9,12 +9,14 @@
 #import "RSUIButton.h"
 #import "RSPalletVC.h"
 #import "RSHeadView.h"
-#import "RSData.h"
+#import "RSTreeView.h"
+
 @interface RSArtistVC ()
 @property (strong, nonatomic) NSArray<UIColor *> *colors;
 @property (strong, nonatomic) RSHeadView *head;
+@property (strong, nonatomic) RSTreeView *tree;
 @property BOOL stopRedraw;
-@property (strong, nonatomic) RSData *data;
+@property NSInteger number;
 @property (nonatomic) float timeValue;
 @end
 
@@ -22,9 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.data = [RSData new];
     [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
     self.head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
+    self.tree = [[RSTreeView alloc] initWithFrame:self.canvas.bounds];
     self.state = ASIdle;
     [self createTimerVC];
     [self createPalletVC];
@@ -37,7 +39,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.stopRedraw)
+    {
         self.head.noDraw = YES;
+        self.tree.noDraw = YES;
+    }
 }
 
 #pragma mark UI
@@ -110,6 +115,17 @@
     [backbutton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor colorWithRed:0.13 green:0.692 blue:0.557 alpha:1], NSForegroundColorAttributeName, [UIFont fontWithName:@"Montserrat-Regular" size:17], NSFontAttributeName,
                                         nil] forState:UIControlStateNormal];
     self.navigationItem.backBarButtonItem = backbutton;
+    if (self.number)
+    {
+        for (UIButton *button in drawVC.view.subviews)
+        {
+            if (button.tag == self.number)
+            {
+                button.layer.shadowColor = [UIColor colorWithRed:0.13 green:0.692 blue:0.557 alpha:1].CGColor;
+                button.layer.shadowRadius = 2;
+            }
+        }
+    }
     [self.navigationController pushViewController:drawVC animated:NO];
 }
 
@@ -152,9 +168,16 @@
     self.head.delegate = self;
     self.head.colors = self.colors;
     self.head.interval = self.timeValue;
-    self.head.data.resultShape = self.data.resultShape;
-    self.head.data.resultBeginPoints = self.data.resultBeginPoints;
-    [self.canvas addSubview:self.head];
+    self.tree.noDraw = NO;
+    self.state = ASDraw;
+    self.tree.delegate = self;
+    self.tree.colors = self.colors;
+    self.tree.interval = self.timeValue;
+    if (self.number == 2 || !self.number)
+        [self.canvas addSubview:self.head];
+    if (self.number == 3)
+        [self.canvas addSubview:self.tree];
+    NSLog(@"number: %ld", (long)(self.number));
 }
 
 - (void)createTimerVC {
@@ -255,23 +278,19 @@
 - (void)getResultShapeWithTheValue:(NSString *)theValue {
     if ([theValue isEqualToString:@"Head"])
     {
-        self.data.resultShape = self.data.face;
-        self.data.resultBeginPoints = self.data.faceBeginPoints;
+        self.number = 2;
     }
     if ([theValue isEqualToString:@"Tree"])
     {
-        self.data.resultShape = self.data.tree;
-        self.data.resultBeginPoints = self.data.treeBeginPoints;
+        self.number = 3;
     }
     if ([theValue isEqualToString:@"Planet"])
     {
-        self.data.resultShape = self.data.planet;
-        self.data.resultBeginPoints = self.data.planetBeginPoints;
+        self.number = 1;
     }
     if ([theValue isEqualToString:@"Landscape"])
     {
-        self.data.resultShape = self.data.landscape;
-        self.data.resultBeginPoints = self.data.landscapeBeginPoints;
+        self.number = 4;
     }
 }
 

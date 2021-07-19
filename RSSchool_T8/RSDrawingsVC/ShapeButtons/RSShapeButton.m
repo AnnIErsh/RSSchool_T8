@@ -19,7 +19,6 @@
     self.layer.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.25].CGColor;
     self.layer.shadowOffset = CGSizeMake(0, 0);
     self.layer.shadowOpacity = 1;
-    self.layer.shadowRadius = 1;
     self.layer.cornerRadius = 10;
     self.layer.masksToBounds = NO;
     [self setTitleColor:[UIColor colorWithRed:0.13 green:0.692 blue:0.557 alpha:1] forState:UIControlStateNormal];
@@ -28,6 +27,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.tapped = YES;
     self.layer.shadowColor = [UIColor colorWithRed:0.13 green:0.692 blue:0.557 alpha:1].CGColor;
     self.layer.shadowRadius = 2;
     [super touchesBegan:touches withEvent:event];
