@@ -193,6 +193,8 @@
     self.land.delegate = self;
     self.land.colors = self.colors;
     self.land.interval = self.timeValue;
+    self.land.noDraw = NO;
+    //self.state = ASDraw;
     if (self.number == 2 || !self.number)
         [self.canvas addSubview:self.head];
     if (self.number == 3)
