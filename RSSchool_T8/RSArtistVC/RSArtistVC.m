@@ -145,6 +145,10 @@
 }
 
 - (void)tapOnShare {
+    self.land.noDraw = YES;
+    self.head.noDraw = YES;
+    self.planet.noDraw = YES;
+    self.tree.noDraw = YES;
     UIGraphicsBeginImageContextWithOptions(self.canvas.bounds.size, 0, 0);
     [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *imageToSave = UIGraphicsGetImageFromCurrentImageContext();
