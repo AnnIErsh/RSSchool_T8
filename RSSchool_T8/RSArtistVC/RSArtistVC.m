@@ -164,7 +164,7 @@
     self.state = ASIdle;
     [self.time invalidate];
     self.time = nil;
-    self.time = [NSTimer scheduledTimerWithTimeInterval: 0.005
+    self.time = [NSTimer scheduledTimerWithTimeInterval: 0.003
                                                      target: self
                                                    selector:@selector(deleteLayer)
                                                    userInfo: nil repeats:YES];
@@ -177,7 +177,7 @@
     {
         [self.time invalidate];
         self.time = nil;
-        NSLog(@"remover timer STOP!");
+        //NSLog(@"remover palette timer STOP!");
         [self.canvas.subviews.lastObject removeFromSuperview];
     }
 }

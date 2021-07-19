@@ -41,10 +41,6 @@
         UIBezierPath *path0 = [self drawFirstStrokeWithPath];
         UIBezierPath *path1 = [self drawSecondStrokeWithPath];
         UIBezierPath *path2 = [self drawThirdStrokeWithPath];
-        float deltaS = self.points0.count;
-        self.points1.count > self.points0.count ? deltaS = self.points1.count : deltaS;
-        self.points2.count > deltaS ? deltaS = self.points2.count : deltaS;
-        self.interval /= deltaS;
         [self drawPath0:path0 path1:path1 andPath2:path2];
     }
     if (self.time && self.time1 && self.time2)
@@ -281,9 +277,9 @@
 
 
 - (void)drawPath0:(UIBezierPath *)path0 path1:(UIBezierPath *)path1 andPath2:(UIBezierPath *)path2 {
-    [self createPath:path0 forPoints:self.points0 withInterval:self.interval andColor:self.colors[0]];
-    [self createPath1:path1 forPoints:self.points1 withInterval:self.interval andColor:self.colors[1]];
-    [self createPath2:path2 forPoints:self.points2 withInterval:self.interval andColor:self.colors[2]];
+    [self createPath:path0 forPoints:self.points0 withInterval:self.interval / 15 andColor:self.colors[0]];
+    [self createPath1:path1 forPoints:self.points1 withInterval:self.interval / 46 andColor:self.colors[1]];
+    [self createPath2:path2 forPoints:self.points2 withInterval:self.interval / 38 andColor:self.colors[2]];
 }
 
 @end
