@@ -27,6 +27,7 @@
 		E7D75D3B26A4851D002969D3 /* RSDrawOnCanvasDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D75D3A26A4851D002969D3 /* RSDrawOnCanvasDelegate.swift */; };
 		E7D75D4826A4CC8A002969D3 /* RSShapeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D75D4726A4CC8A002969D3 /* RSShapeButton.m */; };
 		E7D75D4E26A51D3C002969D3 /* RSTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D75D4D26A51D3C002969D3 /* RSTreeView.m */; };
+		E7D75D5226A56347002969D3 /* RSPlanetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D75D5126A56347002969D3 /* RSPlanetView.m */; };
 		E7F3A59A26A4071800B39B8A /* RSTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59826A4071800B39B8A /* RSTimerVC.swift */; };
 		E7F3A59B26A4071800B39B8A /* RSTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F3A59926A4071800B39B8A /* RSTimerVC.xib */; };
 		E7F3A59F26A4536B00B39B8A /* RSTimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */; };
@@ -69,6 +70,8 @@
 		E7D75D4726A4CC8A002969D3 /* RSShapeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSShapeButton.m; sourceTree = "<group>"; };
 		E7D75D4C26A51D3C002969D3 /* RSTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTreeView.h; sourceTree = "<group>"; };
 		E7D75D4D26A51D3C002969D3 /* RSTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTreeView.m; sourceTree = "<group>"; };
+		E7D75D5026A56347002969D3 /* RSPlanetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPlanetView.h; sourceTree = "<group>"; };
+		E7D75D5126A56347002969D3 /* RSPlanetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPlanetView.m; sourceTree = "<group>"; };
 		E7F3A59826A4071800B39B8A /* RSTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerVC.swift; sourceTree = "<group>"; };
 		E7F3A59926A4071800B39B8A /* RSTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSTimerVC.xib; sourceTree = "<group>"; };
 		E7F3A59E26A4536B00B39B8A /* RSTimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTimerDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		E712A30226A3480700D6B3E4 /* Drawings */ = {
 			isa = PBXGroup;
 			children = (
+				E7D75D4F26A56323002969D3 /* Planet */,
 				E7D75D4B26A51D1F002969D3 /* Tree */,
 				E712A30626A3580900D6B3E4 /* Head */,
 			);
@@ -249,6 +253,15 @@
 			path = Tree;
 			sourceTree = "<group>";
 		};
+		E7D75D4F26A56323002969D3 /* Planet */ = {
+			isa = PBXGroup;
+			children = (
+				E7D75D5026A56347002969D3 /* RSPlanetView.h */,
+				E7D75D5126A56347002969D3 /* RSPlanetView.m */,
+			);
+			path = Planet;
+			sourceTree = "<group>";
+		};
 		E7F3A59626A406BF00B39B8A /* RSTimerVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +359,7 @@
 				E7F3A59F26A4536B00B39B8A /* RSTimerDelegate.swift in Sources */,
 				E7D75D3B26A4851D002969D3 /* RSDrawOnCanvasDelegate.swift in Sources */,
 				E723494C26A243FB0096D488 /* RSPalleteUnit.m in Sources */,
+				E7D75D5226A56347002969D3 /* RSPlanetView.m in Sources */,
 				E7A5B7BC26A0C1860048B382 /* RSNavigationVC.m in Sources */,
 				E7D75D4826A4CC8A002969D3 /* RSShapeButton.m in Sources */,
 			);

@@ -134,7 +134,20 @@
     [self.openPalette addTarget:self action:@selector(tapOnPallete) forControlEvents:UIControlEventTouchUpInside];
     [self.reset addTarget:self action:@selector(tapOnReset) forControlEvents:UIControlEventTouchUpInside];
     [self.openTimer addTarget:self action:@selector(tapOnTimer) forControlEvents:UIControlEventTouchUpInside];
+    [self.share addTarget:self action:@selector(tapOnShare) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)tapOnShare {
+    UIGraphicsBeginImageContextWithOptions(self.canvas.bounds.size, 0, 0);
+    [self.canvas.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *imageToSave = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[imageToSave] applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[UIActivityTypeAirDrop];
+    [self presentViewController:activityVC animated:YES completion:^{}];
+    //UIImageWriteToSavedPhotosAlbum(imageToSave, nil,nil, nil);
+}
+
 
 - (void)tapOnTimer {
     self.childViewControllers.firstObject.view.hidden = NO;
