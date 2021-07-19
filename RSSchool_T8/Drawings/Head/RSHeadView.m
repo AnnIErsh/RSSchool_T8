@@ -43,8 +43,6 @@
         UIBezierPath *path2 = [self drawThirdStrokeWithPath];
         [self drawPath0:path0 path1:path1 andPath2:path2];
     }
-    if (self.time && self.time1 && self.time2)
-        [self.delegate isReady:YES];
 }
 
 - (void)createPath:(UIBezierPath *)path forPoints:(NSArray *)points withInterval:(float)i andColor:(UIColor *)color {
@@ -102,6 +100,8 @@
         self.time = nil;
         NSLog(@"STOP0");
         self.stop = YES;
+        if (!self.time1 && !self.time2 && !self.time)
+            [self.delegate isReady:YES];
     }
 }
 
@@ -118,6 +118,8 @@
         self.time1 = nil;
         self.stop1 = YES;
         NSLog(@"STOP1");
+        if (!self.time1 && !self.time2 && !self.time)
+            [self.delegate isReady:YES];
     }
 }
 
@@ -134,6 +136,9 @@
         self.time2 = nil;
         self.stop2 = YES;
         NSLog(@"STOP2");
+        if (!self.time1 && !self.time2 && !self.time)
+            [self.delegate isReady:YES];
+        
     }
 }
 
@@ -277,9 +282,9 @@
 
 
 - (void)drawPath0:(UIBezierPath *)path0 path1:(UIBezierPath *)path1 andPath2:(UIBezierPath *)path2 {
-    [self createPath:path0 forPoints:self.points0 withInterval:self.interval / 15 andColor:self.colors[0]];
+    [self createPath:path0 forPoints:self.points0 withInterval:self.interval / 46 andColor:self.colors[0]];
     [self createPath1:path1 forPoints:self.points1 withInterval:self.interval / 46 andColor:self.colors[1]];
-    [self createPath2:path2 forPoints:self.points2 withInterval:self.interval / 38 andColor:self.colors[2]];
+    [self createPath2:path2 forPoints:self.points2 withInterval:self.interval / 46 andColor:self.colors[2]];
 }
 
 @end

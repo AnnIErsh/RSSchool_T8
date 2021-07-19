@@ -164,7 +164,7 @@
     self.state = ASIdle;
     [self.time invalidate];
     self.time = nil;
-    self.time = [NSTimer scheduledTimerWithTimeInterval: 0.003
+    self.time = [NSTimer scheduledTimerWithTimeInterval: 0.0008
                                                      target: self
                                                    selector:@selector(deleteLayer)
                                                    userInfo: nil repeats:YES];
