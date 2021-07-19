@@ -10,11 +10,13 @@
 #import "RSPalletVC.h"
 #import "RSHeadView.h"
 #import "RSTreeView.h"
+#import "RSLandscapeView.h"
 
 @interface RSArtistVC ()
 @property (strong, nonatomic) NSArray<UIColor *> *colors;
 @property (strong, nonatomic) RSHeadView *head;
 @property (strong, nonatomic) RSTreeView *tree;
+@property (strong, nonatomic) RSLandscapeView *land;
 @property BOOL stopRedraw;
 @property NSInteger number;
 @property (nonatomic) float timeValue;
@@ -27,6 +29,7 @@
     [self addObserver:self forKeyPath:@"self.state" options:NSKeyValueObservingOptionNew context:nil];
     self.head = [[RSHeadView alloc] initWithFrame:self.canvas.bounds];
     self.tree = [[RSTreeView alloc] initWithFrame:self.canvas.bounds];
+    self.land = [[RSLandscapeView alloc] initWithFrame:self.canvas.bounds];
     self.state = ASIdle;
     [self createTimerVC];
     [self createPalletVC];
@@ -42,6 +45,7 @@
     {
         self.head.noDraw = YES;
         self.tree.noDraw = YES;
+        self.land.noDraw = YES;
     }
 }
 
@@ -182,14 +186,19 @@
     self.head.colors = self.colors;
     self.head.interval = self.timeValue;
     self.tree.noDraw = NO;
-    self.state = ASDraw;
+    //self.state = ASDraw;
     self.tree.delegate = self;
     self.tree.colors = self.colors;
     self.tree.interval = self.timeValue;
+    self.land.delegate = self;
+    self.land.colors = self.colors;
+    self.land.interval = self.timeValue;
     if (self.number == 2 || !self.number)
         [self.canvas addSubview:self.head];
     if (self.number == 3)
         [self.canvas addSubview:self.tree];
+    if (self.number == 4)
+        [self.canvas addSubview:self.land];
     NSLog(@"number: %ld", (long)(self.number));
 }
 
